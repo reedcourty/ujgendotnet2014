@@ -7,6 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pomodoro", "Pomodoro\Pomodo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroDAL", "PomodoroDAL\PomodoroDAL.csproj", "{B505B779-7DC8-4BAF-BC4C-8C95C1042A82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroDALSchema", "PomodoroDALSchema\PomodoroDALSchema.csproj", "{7AF3A334-9494-4580-B45E-03431ECA5644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroUnitTest", "PomodoroUnitTest\PomodoroUnitTest.csproj", "{DC85EF25-B583-4129-B903-9847624891FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroServer", "PomodoroServer\PomodoroServer.csproj", "{44FDD4AE-0D69-4520-993C-C7FB3CEE33B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroClient", "PomodoroClient\PomodoroClient.csproj", "{15A8D278-76ED-4475-BB25-9831C69D7BB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroService", "PomodoroService\PomodoroService.csproj", "{6A0FF7CF-EB31-48A1-9B45-AC434A09F454}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +31,26 @@ Global
 		{B505B779-7DC8-4BAF-BC4C-8C95C1042A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B505B779-7DC8-4BAF-BC4C-8C95C1042A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B505B779-7DC8-4BAF-BC4C-8C95C1042A82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AF3A334-9494-4580-B45E-03431ECA5644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF3A334-9494-4580-B45E-03431ECA5644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF3A334-9494-4580-B45E-03431ECA5644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF3A334-9494-4580-B45E-03431ECA5644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC85EF25-B583-4129-B903-9847624891FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC85EF25-B583-4129-B903-9847624891FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC85EF25-B583-4129-B903-9847624891FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC85EF25-B583-4129-B903-9847624891FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44FDD4AE-0D69-4520-993C-C7FB3CEE33B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44FDD4AE-0D69-4520-993C-C7FB3CEE33B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44FDD4AE-0D69-4520-993C-C7FB3CEE33B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44FDD4AE-0D69-4520-993C-C7FB3CEE33B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15A8D278-76ED-4475-BB25-9831C69D7BB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15A8D278-76ED-4475-BB25-9831C69D7BB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15A8D278-76ED-4475-BB25-9831C69D7BB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15A8D278-76ED-4475-BB25-9831C69D7BB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A0FF7CF-EB31-48A1-9B45-AC434A09F454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A0FF7CF-EB31-48A1-9B45-AC434A09F454}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A0FF7CF-EB31-48A1-9B45-AC434A09F454}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A0FF7CF-EB31-48A1-9B45-AC434A09F454}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
