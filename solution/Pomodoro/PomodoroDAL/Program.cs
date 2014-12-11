@@ -13,6 +13,8 @@ namespace PomodoroDAL
             string connectionString = @"Data Source=(localdb)\ProjectsV12;Initial Catalog=pomodoro;Integrated Security=True;MultipleActiveResultSets=True;";
             using (PomodoroContext pctx = new PomodoroContext(connectionString))
             {
+                Console.WriteLine(String.Format("ProxyCreationEnabled: {0}", pctx.Configuration.ProxyCreationEnabled));
+
                 // Entry entry = pctx.Entries.FirstOrDefault();
                 Tag tag_test_001 = new PomodoroTag() { TagName = "Test 001", CreatedAt = DateTime.UtcNow };
                 pctx.Tags.Add(tag_test_001);

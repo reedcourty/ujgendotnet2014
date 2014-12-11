@@ -22,7 +22,7 @@ namespace PomodoroDAL
         public PomodoroContext(string connectionString)
             : base(connectionString)
         {
-
+            this.Configuration.ProxyCreationEnabled = false;  
         }
 
         public PomodoroContext()
