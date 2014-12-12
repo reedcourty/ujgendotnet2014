@@ -12,16 +12,70 @@ namespace PomodoroService
     {
         public List<Tag> GetTags()
         {
-            Tag tag_test_001 = new Tag() { TagName = "Test 001" };
-            Tag tag_test_002 = new PomodoroTag() { TagName = "Test 002", CreatedAt = DateTime.UtcNow };
-            Tag tag_test_003 = new ProjectTag() { TagName = "Test 003", CreatedAt = DateTime.UtcNow, Priority = 1 };
+            return new List<Tag>();
+        }
 
-            List<Tag> tags = new List<Tag>();
-            tags.Add(tag_test_001);
-            tags.Add(tag_test_002);
-            tags.Add(tag_test_003);
+        public List<Entry> GetEntries()
+        {
+            return new List<Entry>();
+        }
 
-            return tags;
+
+        public List<Comment> GetComments()
+        {
+            return new List<Comment>();
+        }
+
+
+        public Tag GetTag(int id)
+        {
+            return new Tag();
+        }
+
+
+        public Entry GetEntry(int id) {
+            return new Entry();
+        }
+
+
+        public Comment GetComment(int id)
+        {
+            return new Comment();
+        }
+
+
+        public void AddTag(Tag new_tag)
+        {
+
+        }
+
+
+        public void AddEntry(Entry new_entry)
+        {
+
+        }
+
+
+        public void AddComment(Comment new_comment)
+        {
+
+        }
+
+        public void UpdateTag(int id, string tagname, List<int> entry_ids)
+        {
+
+        }
+
+
+        public void UpdateEntry(int id, DateTime timestamp, string description, List<int> tag_ids, int comment_id)
+        {
+
+        }
+
+
+        public void UpdateComment(int id, string content, int entryId)
+        {
+
         }
     }
 }
