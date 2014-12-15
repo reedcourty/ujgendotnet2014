@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="PomodoroGUI.Views.PomodoroTimerView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.ignore.com"
+        mc:Ignorable="d ignore">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Column="0" Text="{Binding CurrentTimerValue}" FontSize="32" Margin="10,10,10,10" Width="128" Height="48" TextAlignment="Center" Background="{Binding TimerBackgroundColor}"></TextBox>
+        <Button Grid.Column="1" Width="64" Height="32" Margin="10,10,10,10" FontSize="18" Command="{Binding StartTimerCommand}" IsEnabled="{Binding StartEnabled}">Start</Button>
+
+    </Grid>
+
+</UserControl>
