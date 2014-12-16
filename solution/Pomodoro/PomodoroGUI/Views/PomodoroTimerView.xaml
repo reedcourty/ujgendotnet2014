@@ -6,10 +6,10 @@
         xmlns:ignore="http://www.ignore.com"
         mc:Ignorable="d ignore">
 
-    <Grid>
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBox Grid.Column="0" Text="{Binding CurrentTimerValue}" FontSize="32" Margin="10,10,10,10" Width="128" Height="48" TextAlignment="Center" Background="{Binding TimerBackgroundColor}"></TextBox>
         <Button Grid.Column="1" Width="64" Height="32" Margin="10,10,10,10" FontSize="18" Command="{Binding StartTimerCommand}" IsEnabled="{Binding StartEnabled}">Start</Button>

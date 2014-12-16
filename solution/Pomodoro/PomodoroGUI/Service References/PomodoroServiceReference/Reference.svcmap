@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d0a3961f-00dd-49bd-94e6-7f8cc9de973f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/PomodoroService/Service1/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="1a528289-0fa0-4c18-b159-089f299c237a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PomodoroService/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="389f772d-180d-4beb-b42b-4c50fc0af717" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PomodoroService/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="648bee67-e389-4a44-9492-23be757a1ed6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PomodoroService/Service1/mex" />
+    <MetadataFile FileName="PomodoroDAL.xsd" MetadataType="Schema" ID="2909fd0a-6937-445b-9fe0-23261a9bf15e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PomodoroService/Service1/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="81f4c101-6c95-4702-8057-9085c30449e2" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PomodoroService/Service1/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

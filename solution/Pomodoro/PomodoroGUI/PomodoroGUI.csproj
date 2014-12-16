@@ -83,6 +83,7 @@
       <HintPath>..\packages\Rx-XAML.2.2.5\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -103,9 +104,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Messaging\PomodoroTimerMessage.cs" />
+    <Compile Include="Service References\PomodoroServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\EntryViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PomodoroTimerViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\EntryView.xaml.cs">
+      <DependentUpon>EntryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PomodoroTimerView.xaml.cs">
       <DependentUpon>PomodoroTimerView.xaml</DependentUpon>
     </Compile>
@@ -121,6 +132,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\EntryView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PomodoroTimerView.xaml">
       <SubType>Form</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,12 +165,52 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\PomodoroServiceReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PomodoroServiceReference\PomodoroDAL.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PomodoroServiceReference\PomodoroGUI.PomodoroServiceReference.Comment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PomodoroServiceReference\PomodoroGUI.PomodoroServiceReference.Entry.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PomodoroServiceReference\PomodoroGUI.PomodoroServiceReference.Tag.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PomodoroServiceReference\service.wsdl" />
+    <None Include="Service References\PomodoroServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PomodoroServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\PomodoroServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PomodoroServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PomodoroServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PomodoroServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

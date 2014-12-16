@@ -45,6 +45,7 @@ namespace PomodoroGUI.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<PomodoroTimerViewModel>();
+            SimpleIoc.Default.Register<EntryViewModel>();
         }
 
         public MainViewModel Main
@@ -60,6 +61,14 @@ namespace PomodoroGUI.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<PomodoroTimerViewModel>();
+            }
+        }
+
+        public EntryViewModel Entry
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<EntryViewModel>();
             }
         }
         

@@ -1,5 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
+using PomodoroGUI.Messaging;
 using System;
 using System.ComponentModel;
 using System.Reactive.Linq;
@@ -135,6 +137,8 @@ namespace PomodoroGUI.ViewModels
             StartEnabled = false;
 
             TimerBackgroundColor = "white";
+
+            Messenger.Default.Send(new PomodoroTimerMessage() { Type = PomodoroTimerMessage.MessageType.TimerStarted, Timestamp = StartCounterAt });
         }
 
 
@@ -201,6 +205,7 @@ namespace PomodoroGUI.ViewModels
         {
             StartEnabled = true;
             TimerBackgroundColor = "salmon";
+            Messenger.Default.Send(new PomodoroTimerMessage() { Type = PomodoroTimerMessage.MessageType.TimerCountedDown });
         }
     }
 }
