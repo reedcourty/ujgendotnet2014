@@ -5,6 +5,7 @@ using PomodoroGUI.Messaging;
 using PomodoroGUI.PomodoroServiceReference;
 using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -38,13 +39,14 @@ namespace PomodoroGUI.ViewModels
             set { entry.Timestamp = value; RaisePropertyChanged("EntryTimestamp"); }
         }
 
-
+        private string oldDescription;
 
         public string EntryDescription
         {
             get { return entry.Description; }
             set 
-            { 
+            {
+                oldDescription = entry.Description;
                 entry.Description = value;
                 RaisePropertyChanged("EntryDescription");
             }
@@ -155,11 +157,33 @@ namespace PomodoroGUI.ViewModels
 
         void EntryViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MessageBox.Show(sender.ToString());
+            Entry modifiedEntry = ((EntryViewModel)sender).entry;
 
+            BackgroundWorker bw = new BackgroundWorker();
 
+            bw.DoWork += (s, ev) => UpdateEntry(modifiedEntry.Id, oldDescription, modifiedEntry.Description);
+            
+            
+            bw.RunWorkerAsync();
+            
+            // var ize = UpdateEntryAsync(modifiedEntry.Id, oldDescription, modifiedEntry.Description);
+            
+           
 
+        }
 
+        private string UpdateEntry(int entryId, string oldDescription, string newDescription)
+        {
+
+            string result = "";
+
+            using (PomodoroServiceClient psc = new PomodoroServiceClient())
+            {
+                result = psc.UpdateEntry(entryId, oldDescription, newDescription);
+                MessageBox.Show(result);
+            }
+
+            return result;
         }
 
         public EntryViewModel(Entry entry)

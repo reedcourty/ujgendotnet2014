@@ -26,7 +26,6 @@
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="389f772d-180d-4beb-b42b-4c50fc0af717" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PomodoroService/Service1/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="648bee67-e389-4a44-9492-23be757a1ed6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PomodoroService/Service1/mex" />
     <MetadataFile FileName="PomodoroDAL.xsd" MetadataType="Schema" ID="2909fd0a-6937-445b-9fe0-23261a9bf15e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PomodoroService/Service1/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="81f4c101-6c95-4702-8057-9085c30449e2" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PomodoroService/Service1/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

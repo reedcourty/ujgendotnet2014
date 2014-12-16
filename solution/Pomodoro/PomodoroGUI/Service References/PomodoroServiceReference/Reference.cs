@@ -329,71 +329,17 @@ namespace PomodoroGUI.PomodoroServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PomodoroServiceReference.IPomodoroService")]
     public interface IPomodoroService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetTags", ReplyAction="http://tempuri.org/IPomodoroService/GetTagsResponse")]
-        PomodoroGUI.PomodoroServiceReference.Tag[] GetTags();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetTags", ReplyAction="http://tempuri.org/IPomodoroService/GetTagsResponse")]
-        System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Tag[]> GetTagsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetComments", ReplyAction="http://tempuri.org/IPomodoroService/GetCommentsResponse")]
-        PomodoroGUI.PomodoroServiceReference.Comment[] GetComments();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetComments", ReplyAction="http://tempuri.org/IPomodoroService/GetCommentsResponse")]
-        System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Comment[]> GetCommentsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetTag", ReplyAction="http://tempuri.org/IPomodoroService/GetTagResponse")]
-        PomodoroGUI.PomodoroServiceReference.Tag GetTag(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetTag", ReplyAction="http://tempuri.org/IPomodoroService/GetTagResponse")]
-        System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Tag> GetTagAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetEntry", ReplyAction="http://tempuri.org/IPomodoroService/GetEntryResponse")]
-        PomodoroGUI.PomodoroServiceReference.Entry GetEntry(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetEntry", ReplyAction="http://tempuri.org/IPomodoroService/GetEntryResponse")]
-        System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Entry> GetEntryAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetComment", ReplyAction="http://tempuri.org/IPomodoroService/GetCommentResponse")]
-        PomodoroGUI.PomodoroServiceReference.Comment GetComment(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetComment", ReplyAction="http://tempuri.org/IPomodoroService/GetCommentResponse")]
-        System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Comment> GetCommentAsync(int id);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/AddTag", ReplyAction="http://tempuri.org/IPomodoroService/AddTagResponse")]
         PomodoroGUI.PomodoroServiceReference.Tag AddTag(string tagName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/AddTag", ReplyAction="http://tempuri.org/IPomodoroService/AddTagResponse")]
         System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Tag> AddTagAsync(string tagName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/AddEntry", ReplyAction="http://tempuri.org/IPomodoroService/AddEntryResponse")]
-        void AddEntry(PomodoroGUI.PomodoroServiceReference.Entry new_entry);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/AddEntry", ReplyAction="http://tempuri.org/IPomodoroService/AddEntryResponse")]
-        System.Threading.Tasks.Task AddEntryAsync(PomodoroGUI.PomodoroServiceReference.Entry new_entry);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/AddComment", ReplyAction="http://tempuri.org/IPomodoroService/AddCommentResponse")]
-        void AddComment(PomodoroGUI.PomodoroServiceReference.Comment new_comment);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/AddComment", ReplyAction="http://tempuri.org/IPomodoroService/AddCommentResponse")]
-        System.Threading.Tasks.Task AddCommentAsync(PomodoroGUI.PomodoroServiceReference.Comment new_comment);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/UpdateTag", ReplyAction="http://tempuri.org/IPomodoroService/UpdateTagResponse")]
-        void UpdateTag(int id, string tagname, int[] entry_ids);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/UpdateTag", ReplyAction="http://tempuri.org/IPomodoroService/UpdateTagResponse")]
-        System.Threading.Tasks.Task UpdateTagAsync(int id, string tagname, int[] entry_ids);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/UpdateEntry", ReplyAction="http://tempuri.org/IPomodoroService/UpdateEntryResponse")]
+        string UpdateEntry(int entryId, string oldDescription, string newDescription);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/UpdateEntry", ReplyAction="http://tempuri.org/IPomodoroService/UpdateEntryResponse")]
-        void UpdateEntry(int id, System.DateTime timestamp, string description, int[] tag_ids, int comment_id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/UpdateEntry", ReplyAction="http://tempuri.org/IPomodoroService/UpdateEntryResponse")]
-        System.Threading.Tasks.Task UpdateEntryAsync(int id, System.DateTime timestamp, string description, int[] tag_ids, int comment_id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/UpdateComment", ReplyAction="http://tempuri.org/IPomodoroService/UpdateCommentResponse")]
-        void UpdateComment(int id, string content, int entryId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/UpdateComment", ReplyAction="http://tempuri.org/IPomodoroService/UpdateCommentResponse")]
-        System.Threading.Tasks.Task UpdateCommentAsync(int id, string content, int entryId);
+        System.Threading.Tasks.Task<string> UpdateEntryAsync(int entryId, string oldDescription, string newDescription);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/SaveEntry", ReplyAction="http://tempuri.org/IPomodoroService/SaveEntryResponse")]
         string SaveEntry(System.DateTime timestamp, string description, string tags);
@@ -435,46 +381,6 @@ namespace PomodoroGUI.PomodoroServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public PomodoroGUI.PomodoroServiceReference.Tag[] GetTags() {
-            return base.Channel.GetTags();
-        }
-        
-        public System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Tag[]> GetTagsAsync() {
-            return base.Channel.GetTagsAsync();
-        }
-        
-        public PomodoroGUI.PomodoroServiceReference.Comment[] GetComments() {
-            return base.Channel.GetComments();
-        }
-        
-        public System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Comment[]> GetCommentsAsync() {
-            return base.Channel.GetCommentsAsync();
-        }
-        
-        public PomodoroGUI.PomodoroServiceReference.Tag GetTag(int id) {
-            return base.Channel.GetTag(id);
-        }
-        
-        public System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Tag> GetTagAsync(int id) {
-            return base.Channel.GetTagAsync(id);
-        }
-        
-        public PomodoroGUI.PomodoroServiceReference.Entry GetEntry(int id) {
-            return base.Channel.GetEntry(id);
-        }
-        
-        public System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Entry> GetEntryAsync(int id) {
-            return base.Channel.GetEntryAsync(id);
-        }
-        
-        public PomodoroGUI.PomodoroServiceReference.Comment GetComment(int id) {
-            return base.Channel.GetComment(id);
-        }
-        
-        public System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Comment> GetCommentAsync(int id) {
-            return base.Channel.GetCommentAsync(id);
-        }
-        
         public PomodoroGUI.PomodoroServiceReference.Tag AddTag(string tagName) {
             return base.Channel.AddTag(tagName);
         }
@@ -483,44 +389,12 @@ namespace PomodoroGUI.PomodoroServiceReference {
             return base.Channel.AddTagAsync(tagName);
         }
         
-        public void AddEntry(PomodoroGUI.PomodoroServiceReference.Entry new_entry) {
-            base.Channel.AddEntry(new_entry);
+        public string UpdateEntry(int entryId, string oldDescription, string newDescription) {
+            return base.Channel.UpdateEntry(entryId, oldDescription, newDescription);
         }
         
-        public System.Threading.Tasks.Task AddEntryAsync(PomodoroGUI.PomodoroServiceReference.Entry new_entry) {
-            return base.Channel.AddEntryAsync(new_entry);
-        }
-        
-        public void AddComment(PomodoroGUI.PomodoroServiceReference.Comment new_comment) {
-            base.Channel.AddComment(new_comment);
-        }
-        
-        public System.Threading.Tasks.Task AddCommentAsync(PomodoroGUI.PomodoroServiceReference.Comment new_comment) {
-            return base.Channel.AddCommentAsync(new_comment);
-        }
-        
-        public void UpdateTag(int id, string tagname, int[] entry_ids) {
-            base.Channel.UpdateTag(id, tagname, entry_ids);
-        }
-        
-        public System.Threading.Tasks.Task UpdateTagAsync(int id, string tagname, int[] entry_ids) {
-            return base.Channel.UpdateTagAsync(id, tagname, entry_ids);
-        }
-        
-        public void UpdateEntry(int id, System.DateTime timestamp, string description, int[] tag_ids, int comment_id) {
-            base.Channel.UpdateEntry(id, timestamp, description, tag_ids, comment_id);
-        }
-        
-        public System.Threading.Tasks.Task UpdateEntryAsync(int id, System.DateTime timestamp, string description, int[] tag_ids, int comment_id) {
-            return base.Channel.UpdateEntryAsync(id, timestamp, description, tag_ids, comment_id);
-        }
-        
-        public void UpdateComment(int id, string content, int entryId) {
-            base.Channel.UpdateComment(id, content, entryId);
-        }
-        
-        public System.Threading.Tasks.Task UpdateCommentAsync(int id, string content, int entryId) {
-            return base.Channel.UpdateCommentAsync(id, content, entryId);
+        public System.Threading.Tasks.Task<string> UpdateEntryAsync(int entryId, string oldDescription, string newDescription) {
+            return base.Channel.UpdateEntryAsync(entryId, oldDescription, newDescription);
         }
         
         public string SaveEntry(System.DateTime timestamp, string description, string tags) {

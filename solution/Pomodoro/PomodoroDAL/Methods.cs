@@ -114,6 +114,35 @@ namespace PomodoroDAL
             return result;
         }
 
+        public string UpdateEntry(int entryId, string oldDescription, string newDescription)
+        {
+            string result = "OK";
+
+            using (PomodoroContext pctx = new PomodoroContext(connectionString))
+            {
+                try
+                {
+                    Entry entryInDB = pctx.Entries.Where(x => x.Id == entryId).FirstOrDefault();
+
+                    if (entryInDB.Description == oldDescription)
+                    {
+                        entryInDB.Description = newDescription;
+                        pctx.SaveChanges();
+                    }
+                    else
+                    {
+                        throw new System.Data.Entity.Infrastructure.DbUpdateConcurrencyException();
+                    }
+                }
+                catch (Exception)
+                {
+                    result = "Something went wrong while trying to update the entry.";
+                }
+                
+            }
+
+            return result;
+        }
 
 
         public void DBInit()

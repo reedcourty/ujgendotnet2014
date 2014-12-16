@@ -11,6 +11,7 @@ namespace PomodoroService
     [ServiceContract]
     public interface IPomodoroService
     {
+        /*
         [OperationContract]
         List<Tag> GetTags();
 
@@ -28,12 +29,12 @@ namespace PomodoroService
 
         [OperationContract]
         Comment GetComment(int id);
-
+        */
 
         [OperationContract]
         Tag AddTag(string tagName);
 
-
+        /*
         [OperationContract]
         void AddEntry(Entry new_entry);
 
@@ -45,13 +46,14 @@ namespace PomodoroService
         [OperationContract]
         void UpdateTag(int id, string tagname, List<int> entry_ids);
 
-
+        */
         [OperationContract]
-        void UpdateEntry(int id, DateTime timestamp, string description,  List<int> tag_ids, int comment_id);
+        string UpdateEntry(int entryId, string oldDescription, string newDescription);
 
-
+        /*
         [OperationContract]
         void UpdateComment(int id, string content, int entryId);
+        */
 
         [OperationContract]
         string SaveEntry(DateTime timestamp, string description, string tags);

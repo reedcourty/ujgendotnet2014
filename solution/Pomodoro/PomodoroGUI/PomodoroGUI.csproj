@@ -172,14 +172,8 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\PomodoroServiceReference\Arrays.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\PomodoroServiceReference\PomodoroDAL.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PomodoroServiceReference\PomodoroGUI.PomodoroServiceReference.Comment.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\PomodoroServiceReference\PomodoroGUI.PomodoroServiceReference.Entry.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

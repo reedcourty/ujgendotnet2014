@@ -5,74 +5,19 @@
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/PomodoroDAL" />
-      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IPomodoroService_GetTags_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetTags" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_GetTags_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetTagsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_GetComments_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetComments" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_GetComments_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCommentsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_GetTag_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetTag" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_GetTag_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetTagResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_GetEntry_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetEntry" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_GetEntry_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetEntryResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_GetComment_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetComment" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_GetComment_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCommentResponse" />
-  </wsdl:message>
   <wsdl:message name="IPomodoroService_AddTag_InputMessage">
     <wsdl:part name="parameters" element="tns:AddTag" />
   </wsdl:message>
   <wsdl:message name="IPomodoroService_AddTag_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddTagResponse" />
   </wsdl:message>
-  <wsdl:message name="IPomodoroService_AddEntry_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddEntry" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_AddEntry_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddEntryResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_AddComment_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddComment" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_AddComment_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddCommentResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_UpdateTag_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateTag" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_UpdateTag_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateTagResponse" />
-  </wsdl:message>
   <wsdl:message name="IPomodoroService_UpdateEntry_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateEntry" />
   </wsdl:message>
   <wsdl:message name="IPomodoroService_UpdateEntry_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateEntryResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_UpdateComment_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateComment" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_UpdateComment_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateCommentResponse" />
   </wsdl:message>
   <wsdl:message name="IPomodoroService_SaveEntry_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveEntry" />
@@ -87,49 +32,13 @@
     <wsdl:part name="parameters" element="tns:GetEntriesResponse" />
   </wsdl:message>
   <wsdl:portType name="IPomodoroService">
-    <wsdl:operation name="GetTags">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/GetTags" message="tns:IPomodoroService_GetTags_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/GetTagsResponse" message="tns:IPomodoroService_GetTags_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetComments">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/GetComments" message="tns:IPomodoroService_GetComments_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/GetCommentsResponse" message="tns:IPomodoroService_GetComments_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetTag">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/GetTag" message="tns:IPomodoroService_GetTag_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/GetTagResponse" message="tns:IPomodoroService_GetTag_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetEntry">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/GetEntry" message="tns:IPomodoroService_GetEntry_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/GetEntryResponse" message="tns:IPomodoroService_GetEntry_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetComment">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/GetComment" message="tns:IPomodoroService_GetComment_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/GetCommentResponse" message="tns:IPomodoroService_GetComment_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="AddTag">
       <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/AddTag" message="tns:IPomodoroService_AddTag_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/AddTagResponse" message="tns:IPomodoroService_AddTag_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AddEntry">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/AddEntry" message="tns:IPomodoroService_AddEntry_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/AddEntryResponse" message="tns:IPomodoroService_AddEntry_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddComment">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/AddComment" message="tns:IPomodoroService_AddComment_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/AddCommentResponse" message="tns:IPomodoroService_AddComment_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateTag">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/UpdateTag" message="tns:IPomodoroService_UpdateTag_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/UpdateTagResponse" message="tns:IPomodoroService_UpdateTag_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="UpdateEntry">
       <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/UpdateEntry" message="tns:IPomodoroService_UpdateEntry_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/UpdateEntryResponse" message="tns:IPomodoroService_UpdateEntry_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateComment">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/UpdateComment" message="tns:IPomodoroService_UpdateComment_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/UpdateCommentResponse" message="tns:IPomodoroService_UpdateComment_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SaveEntry">
       <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/SaveEntry" message="tns:IPomodoroService_SaveEntry_InputMessage" />
@@ -142,51 +51,6 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IPomodoroService" type="tns:IPomodoroService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetTags">
-      <soap:operation soapAction="http://tempuri.org/IPomodoroService/GetTags" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetComments">
-      <soap:operation soapAction="http://tempuri.org/IPomodoroService/GetComments" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetTag">
-      <soap:operation soapAction="http://tempuri.org/IPomodoroService/GetTag" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetEntry">
-      <soap:operation soapAction="http://tempuri.org/IPomodoroService/GetEntry" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetComment">
-      <soap:operation soapAction="http://tempuri.org/IPomodoroService/GetComment" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AddTag">
       <soap:operation soapAction="http://tempuri.org/IPomodoroService/AddTag" style="document" />
       <wsdl:input>
@@ -196,44 +60,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddEntry">
-      <soap:operation soapAction="http://tempuri.org/IPomodoroService/AddEntry" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddComment">
-      <soap:operation soapAction="http://tempuri.org/IPomodoroService/AddComment" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateTag">
-      <soap:operation soapAction="http://tempuri.org/IPomodoroService/UpdateTag" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="UpdateEntry">
       <soap:operation soapAction="http://tempuri.org/IPomodoroService/UpdateEntry" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateComment">
-      <soap:operation soapAction="http://tempuri.org/IPomodoroService/UpdateComment" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -13,6 +13,7 @@ namespace PomodoroService
 
         private PomodoroDAL.Methods methods = new Methods();
 
+        /*
         public List<Tag> GetTags()
         {
             return new List<Tag>();
@@ -40,13 +41,14 @@ namespace PomodoroService
             return new Comment();
         }
 
+        */
 
         public Tag AddTag(string tagName)
         {
             return methods.AddNewTag(tagName);
         }
 
-
+        /*
         public void AddEntry(Entry new_entry)
         {
 
@@ -62,19 +64,19 @@ namespace PomodoroService
         {
 
         }
+        */
 
-
-        public void UpdateEntry(int id, DateTime timestamp, string description, List<int> tag_ids, int comment_id)
+        public string UpdateEntry(int entryId, string oldDescription, string newDescription)
         {
-
+            return methods.UpdateEntry(entryId, oldDescription, newDescription);
         }
 
-
+        /*
         public void UpdateComment(int id, string content, int entryId)
         {
 
         }
-
+        */
         public string SaveEntry(DateTime timestamp, string description, string tags)
         {
             string result = "OK";
