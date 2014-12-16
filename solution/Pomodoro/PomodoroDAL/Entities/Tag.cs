@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -12,9 +13,10 @@ namespace PomodoroDAL
     [DataContract]
     public class Tag
     {
-        [DataMember]
-        public int Id { get; set; }
+        //[DataMember]
+        //public int Id { get; set; }
 
+        [Key]
         [DataMember]
         public string TagName { get; set; }
 
