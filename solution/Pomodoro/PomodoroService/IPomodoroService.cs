@@ -14,11 +14,6 @@ namespace PomodoroService
         [OperationContract]
         List<Tag> GetTags();
 
-
-        [OperationContract]
-        List<Entry> GetEntries();
-
-
         [OperationContract]
         List<Comment> GetComments();
 
@@ -36,7 +31,7 @@ namespace PomodoroService
 
 
         [OperationContract]
-        string AddTag(string tagName);
+        Tag AddTag(string tagName);
 
 
         [OperationContract]
@@ -60,6 +55,10 @@ namespace PomodoroService
 
         [OperationContract]
         string SaveEntry(DateTime timestamp, string description, string tags);
+
+        [OperationContract]
+
+        List<Entry> GetEntries();
     }
 
 }

@@ -14,12 +14,6 @@
   <wsdl:message name="IPomodoroService_GetTags_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTagsResponse" />
   </wsdl:message>
-  <wsdl:message name="IPomodoroService_GetEntries_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetEntries" />
-  </wsdl:message>
-  <wsdl:message name="IPomodoroService_GetEntries_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetEntriesResponse" />
-  </wsdl:message>
   <wsdl:message name="IPomodoroService_GetComments_InputMessage">
     <wsdl:part name="parameters" element="tns:GetComments" />
   </wsdl:message>
@@ -86,14 +80,16 @@
   <wsdl:message name="IPomodoroService_SaveEntry_OutputMessage">
     <wsdl:part name="parameters" element="tns:SaveEntryResponse" />
   </wsdl:message>
+  <wsdl:message name="IPomodoroService_GetEntries_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntries" />
+  </wsdl:message>
+  <wsdl:message name="IPomodoroService_GetEntries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntriesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPomodoroService">
     <wsdl:operation name="GetTags">
       <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/GetTags" message="tns:IPomodoroService_GetTags_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/GetTagsResponse" message="tns:IPomodoroService_GetTags_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetEntries">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/GetEntries" message="tns:IPomodoroService_GetEntries_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/GetEntriesResponse" message="tns:IPomodoroService_GetEntries_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetComments">
       <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/GetComments" message="tns:IPomodoroService_GetComments_InputMessage" />
@@ -139,20 +135,15 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/SaveEntry" message="tns:IPomodoroService_SaveEntry_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/SaveEntryResponse" message="tns:IPomodoroService_SaveEntry_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetEntries">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/GetEntries" message="tns:IPomodoroService_GetEntries_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/GetEntriesResponse" message="tns:IPomodoroService_GetEntries_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IPomodoroService" type="tns:IPomodoroService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetTags">
       <soap:operation soapAction="http://tempuri.org/IPomodoroService/GetTags" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetEntries">
-      <soap:operation soapAction="http://tempuri.org/IPomodoroService/GetEntries" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -252,6 +243,15 @@
     </wsdl:operation>
     <wsdl:operation name="SaveEntry">
       <soap:operation soapAction="http://tempuri.org/IPomodoroService/SaveEntry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntries">
+      <soap:operation soapAction="http://tempuri.org/IPomodoroService/GetEntries" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

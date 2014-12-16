@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel;
 using System.Reactive.Linq;
 using System.Threading;
+using System.Windows;
 using System.Windows.Input;
 
 namespace PomodoroGUI.ViewModels
@@ -206,6 +207,8 @@ namespace PomodoroGUI.ViewModels
             StartEnabled = true;
             TimerBackgroundColor = "salmon";
             Messenger.Default.Send(new PomodoroTimerMessage() { Type = PomodoroTimerMessage.MessageType.TimerCountedDown });
+            MessageBox.Show("Game over!");
+            TimerBackgroundColor = "white";
         }
     }
 }

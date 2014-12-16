@@ -9,20 +9,21 @@ namespace PomodoroDAL
     public class Methods
     {
         private string connectionString = @"Data Source=(localdb)\ProjectsV12;Initial Catalog=pomodoro;Integrated Security=True;MultipleActiveResultSets=True;";
+        
 
-
-        public string AddNewTag(string tagName)
+        public Tag AddNewTag(string tagName)
         {
-            string result = "OK";
+            Tag result = null;
 
             using (PomodoroContext pctx = new PomodoroContext(connectionString))
             {
-                Tag tag = new PomodoroTag() { TagName = tagName, CreatedAt = DateTime.UtcNow };
-                pctx.Tags.Add(tag);
+                
                 try
                 {
+                    Tag tag = new PomodoroTag() { TagName = tagName, CreatedAt = DateTime.UtcNow };
+                    pctx.Tags.Add(tag);
                     pctx.SaveChanges();
-                    
+                    result = pctx.Tags.Where(t => t.TagName == tagName).Single();
                 }
                 catch (System.Data.Entity.Infrastructure.DbUpdateException due)
                 {
@@ -31,30 +32,88 @@ namespace PomodoroDAL
                     // "Violation of PRIMARY KEY constraint \'PK_dbo.Tags\'. Cannot insert duplicate key in object \'dbo.Tags\'. The duplicate key value is (Test 001).\r\nThe statement has be en terminated."
                     if (message.Contains(String.Format("The duplicate key value is ({0}).", tagName)))
                     {
-                        result = String.Format("Tag with tagname '{0}' is already exists.", tagName);
+                        result = pctx.Tags.Where(t => t.TagName == tagName).Single();
                     }                    
                 }
                 catch (Exception e)
                 {
-                    result = e.ToString();
+                    throw e;
                 }
             }
             return result;
         }
 
 
-        public string AddNewEntry(DateTime timestamp, string description)
+        public string AddNewEntry(DateTime timestamp, string description, string tags)
         {
             string result = "OK";
 
+            char[] delimiterChars = { ',', ' ' };
+
+            var tagList = tags.Split(delimiterChars).ToList().Distinct().ToList();
+            tagList.Remove("");
+
             using (PomodoroContext pctx = new PomodoroContext(connectionString))
             {
-                Entry entry = new Entry() { Timestamp = timestamp, Description = description };
-                pctx.Entries.Add(entry);
-                pctx.SaveChanges();
+
+                try
+                {
+                    Entry entry = new Entry() { Timestamp = timestamp, Description = description };
+
+                    foreach (var tagName in tagList)
+                    {
+                        var tag = new Tag() { TagName = tagName };
+                        var in_db_tag = pctx.Tags.Where(x => x.TagName == tag.TagName).FirstOrDefault();
+                        if (in_db_tag != null)
+                        {
+
+                            entry.Tags.Add(in_db_tag);
+                        }
+                        else
+                        {
+                            entry.Tags.Add(tag);
+                        }
+                    }
+                                       
+                    pctx.Entries.Add(entry);
+
+                    
+                    pctx.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
             }
             return result;
         }
+
+
+        public List<Entry> GetEntries()
+        {
+            List<Entry> result = new List<Entry>();
+
+            using (PomodoroContext pctx = new PomodoroContext(connectionString))
+            {
+                try
+                {
+                    foreach (var item in pctx.Entries)
+                    {
+                        result.Add(item);
+                    }
+                   
+                }
+                catch (Exception e)
+                {
+                    
+                    throw e;
+                }
+            }
+
+            return result;
+        }
+
 
 
         public void DBInit()

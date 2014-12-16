@@ -19,6 +19,9 @@ namespace PomodoroGUI
         {
             MainWindow view = new PomodoroGUI.MainWindow();
             MainViewModel mainViewModel = new MainViewModel();
+
+            mainViewModel.LoadEntryList();
+
             view.DataContext = mainViewModel;
             view.Show();
         }

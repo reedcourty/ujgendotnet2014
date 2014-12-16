@@ -18,12 +18,6 @@ namespace PomodoroService
             return new List<Tag>();
         }
 
-        public List<Entry> GetEntries()
-        {
-            return new List<Entry>();
-        }
-
-
         public List<Comment> GetComments()
         {
             return new List<Comment>();
@@ -47,7 +41,7 @@ namespace PomodoroService
         }
 
 
-        public string AddTag(string tagName)
+        public Tag AddTag(string tagName)
         {
             return methods.AddNewTag(tagName);
         }
@@ -85,10 +79,15 @@ namespace PomodoroService
         {
             string result = "OK";
 
-            methods.AddNewEntry(timestamp, description);
+            methods.AddNewEntry(timestamp, description, tags);         
 
             return result;
 
+        }
+
+        public List<Entry> GetEntries()
+        {
+            return methods.GetEntries();
         }
     }
 }

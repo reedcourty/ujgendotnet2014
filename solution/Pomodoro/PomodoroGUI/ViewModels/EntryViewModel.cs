@@ -19,6 +19,51 @@ namespace PomodoroGUI.ViewModels
     public class EntryViewModel : ViewModelBase
     {
 
+        Entry entry;
+
+        private int entryId;
+
+        public int EntryId
+        {
+            get { return entry.Id; }
+            set { entry.Id = value; RaisePropertyChanged("EntryId"); }
+        }
+
+
+        
+
+        public DateTime EntryTimestamp
+        {
+            get { return entry.Timestamp; }
+            set { entry.Timestamp = value; RaisePropertyChanged("EntryTimestamp"); }
+        }
+
+
+
+        public string EntryDescription
+        {
+            get { return entry.Description; }
+            set 
+            { 
+                entry.Description = value;
+                RaisePropertyChanged("EntryDescription");
+            }
+        }
+
+
+
+
+
+        public string EntryTags
+        {
+            get { return entry.Tags.ToString(); }
+        }
+        
+
+
+
+
+
         private string tagsBoxValue;
 
         public string TagsBoxValue
@@ -99,7 +144,28 @@ namespace PomodoroGUI.ViewModels
         {
             DisableEntryView();
 
+            DescriptionBoxValue = "What have U done?";
+            TagsBoxValue = "";
+
             Messenger.Default.Register<PomodoroTimerMessage>(this, ProcessMessages);
+            
+            // this.RaisePropertyChanged("EntryDescription");
+            
+        }
+
+        void EntryViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            MessageBox.Show(sender.ToString());
+
+
+
+
+        }
+
+        public EntryViewModel(Entry entry)
+        {
+            this.entry = entry;
+            PropertyChanged += EntryViewModel_PropertyChanged;
         }
 
         private void ProcessMessages(PomodoroTimerMessage receivedMessage)
@@ -134,6 +200,8 @@ namespace PomodoroGUI.ViewModels
 
         private void DoStuffAfterCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            DescriptionBoxValue = "What have U done?";
+            TagsBoxValue = "";
             MessageBox.Show("Entry was saved to DB.");
         }
 
@@ -150,9 +218,8 @@ namespace PomodoroGUI.ViewModels
         {
             SaveNewEntryEnabled = false;
             DescriptionBoxEnabled = false;
-            DescriptionBoxValue = "What have U done?";
             TagsBoxEnabled = false;
-            TagsBoxValue = "";
+            
         }
 
     }

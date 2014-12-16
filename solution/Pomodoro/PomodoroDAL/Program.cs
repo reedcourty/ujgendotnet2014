@@ -10,7 +10,7 @@ namespace PomodoroDAL
     {
         static void Main(string[] args)
         {
-            /*
+            
             string connectionString = @"Data Source=(localdb)\ProjectsV12;Initial Catalog=pomodoro;Integrated Security=True;MultipleActiveResultSets=True;";
             using (PomodoroContext pctx = new PomodoroContext(connectionString))
             {
@@ -56,7 +56,7 @@ namespace PomodoroDAL
                     Console.WriteLine(due.InnerException.InnerException);
                     Console.ReadLine();
 	            }
-            }*/
+            }
         }
     }
 

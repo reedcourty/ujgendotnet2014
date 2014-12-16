@@ -117,6 +117,9 @@
     <Compile Include="Views\EntryView.xaml.cs">
       <DependentUpon>EntryView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NewEntryView.xaml.cs">
+      <DependentUpon>NewEntryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PomodoroTimerView.xaml.cs">
       <DependentUpon>PomodoroTimerView.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,10 @@
     </Compile>
     <Page Include="Views\EntryView.xaml">
       <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewEntryView.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PomodoroTimerView.xaml">

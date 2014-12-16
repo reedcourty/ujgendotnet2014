@@ -29,7 +29,7 @@ namespace PomodoroDAL
 
         // LazyLoading off:
         [DataMember]
-        public ICollection<Tag> Tags { get; private set; }
+        public ICollection<Tag> Tags { get; set; }
 
         [DataMember]
         public Comment Comment { get; set; }

@@ -1,4 +1,5 @@
 ﻿using PomodoroGUI.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace PomodoroGUI.Views
@@ -14,7 +15,6 @@ namespace PomodoroGUI.Views
         public EntryView()
         {
             InitializeComponent();
-            this.DataContext = new EntryViewModel();
         }
     }
 }

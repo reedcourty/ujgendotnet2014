@@ -11,6 +11,7 @@ namespace Pomodoro
     {
         static void Main(string[] args)
         {
+            /*
             Console.WriteLine(DateTime.Now);
 
             var observable = Observable.Timer(DateTime.Now + TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(1)).Timestamp();
@@ -24,6 +25,17 @@ namespace Pomodoro
 
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
+            
+            
+            PomodoroTimer pt = new PomodoroTimer();
+
+            Console.WriteLine(pt.CurrentTime);
+
+            
+
+            Console.WriteLine(pt.CurrentTime);
+
+            */
         }
     }
 }

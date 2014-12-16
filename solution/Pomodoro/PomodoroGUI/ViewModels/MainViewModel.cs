@@ -1,4 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
+using PomodoroGUI.PomodoroServiceReference;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace PomodoroGUI.ViewModels
 {
@@ -15,6 +18,37 @@ namespace PomodoroGUI.ViewModels
         /// </summary>
         public MainViewModel()
         {
+        }
+
+        private ObservableCollection<EntryViewModel> entryList = new ObservableCollection<EntryViewModel>();
+        public ObservableCollection<EntryViewModel> EntryList
+        {
+            get { return entryList; }
+        }
+        public async void LoadEntryList()
+        {
+
+            using (PomodoroServiceClient psc = new PomodoroServiceClient())
+            {
+
+                try
+                {
+                    var entries = await psc.GetEntriesAsync();
+
+                    foreach (var item in entries)
+                    {
+                        entryList.Add(new EntryViewModel(item));
+                    }
+                }
+                catch (System.Exception)
+                {
+                    
+                    MessageBox.Show("There was an error while trying to load entries!");
+                }
+
+            
+            }
+                    
         }
     }
 }

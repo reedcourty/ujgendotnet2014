@@ -14,18 +14,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetEntries">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetEntriesResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="GetEntriesResult" nillable="true" type="q2:ArrayOfEntry" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetComments">
     <xs:complexType>
       <xs:sequence />
@@ -34,7 +22,7 @@
   <xs:element name="GetCommentsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="GetCommentsResult" nillable="true" type="q3:ArrayOfComment" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="GetCommentsResult" nillable="true" type="q2:ArrayOfComment" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -48,7 +36,7 @@
   <xs:element name="GetTagResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="GetTagResult" nillable="true" type="q4:Tag" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="GetTagResult" nillable="true" type="q3:Tag" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -62,7 +50,7 @@
   <xs:element name="GetEntryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="GetEntryResult" nillable="true" type="q5:Entry" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="GetEntryResult" nillable="true" type="q4:Entry" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -76,7 +64,7 @@
   <xs:element name="GetCommentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="GetCommentResult" nillable="true" type="q6:Comment" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="GetCommentResult" nillable="true" type="q5:Comment" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -90,7 +78,7 @@
   <xs:element name="AddTagResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AddTagResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="AddTagResult" nillable="true" type="q6:Tag" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -175,6 +163,18 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SaveEntryResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEntries">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEntriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="GetEntriesResult" nillable="true" type="q11:ArrayOfEntry" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
