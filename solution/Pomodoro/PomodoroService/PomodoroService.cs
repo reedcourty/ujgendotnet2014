@@ -10,6 +10,9 @@ namespace PomodoroService
 {
     public class PomodoroService : IPomodoroService
     {
+
+        private PomodoroDAL.Methods methods = new Methods();
+
         public List<Tag> GetTags()
         {
             return new List<Tag>();
@@ -44,9 +47,9 @@ namespace PomodoroService
         }
 
 
-        public void AddTag(Tag new_tag)
+        public string AddTag(string tagName)
         {
-
+            return methods.AddNewTag(tagName);
         }
 
 
@@ -75,6 +78,16 @@ namespace PomodoroService
 
         public void UpdateComment(int id, string content, int entryId)
         {
+
+        }
+
+        public string SaveEntry(DateTime timestamp, string description, string tags)
+        {
+            string result = "OK";
+
+            methods.AddNewEntry(timestamp, description);
+
+            return result;
 
         }
     }

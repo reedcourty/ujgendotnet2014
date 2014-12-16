@@ -14,6 +14,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroService", "PomodoroService\PomodoroService.csproj", "{6A0FF7CF-EB31-48A1-9B45-AC434A09F454}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroGUI", "PomodoroGUI\PomodoroGUI.csproj", "{0AC65513-47B3-41A4-A729-A13099BF18B9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6A0FF7CF-EB31-48A1-9B45-AC434A09F454} = {6A0FF7CF-EB31-48A1-9B45-AC434A09F454}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

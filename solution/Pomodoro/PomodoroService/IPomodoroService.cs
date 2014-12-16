@@ -36,7 +36,7 @@ namespace PomodoroService
 
 
         [OperationContract]
-        void AddTag(Tag new_tag);
+        string AddTag(string tagName);
 
 
         [OperationContract]
@@ -57,6 +57,9 @@ namespace PomodoroService
 
         [OperationContract]
         void UpdateComment(int id, string content, int entryId);
+
+        [OperationContract]
+        string SaveEntry(DateTime timestamp, string description, string tags);
     }
 
 }
