@@ -10,7 +10,7 @@ namespace PomodoroDAL
 {
     [KnownType(typeof(ProjectTag))]
     [KnownType(typeof(PomodoroTag))]
-    [DataContract]
+    [DataContract(IsReference = true)]
     public class Tag
     {
         //[DataMember]

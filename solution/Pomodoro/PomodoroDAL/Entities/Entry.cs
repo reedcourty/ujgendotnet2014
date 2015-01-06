@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PomodoroDAL
 {
-    [DataContract]
+    [DataContract(IsReference=true)]
     public class Entry
     {
         public Entry()

@@ -8,8 +8,8 @@ namespace PomodoroDAL
 {
     public class Methods
     {
-        // private string connectionString = @"Data Source=(localdb)\ProjectsV12;Initial Catalog=pomodoro;Integrated Security=True;MultipleActiveResultSets=True;";
-        private string connectionString = @"Data Source=(notvalidlocaldb)\ProjectsV12;Initial Catalog=pomodoro;Integrated Security=True;MultipleActiveResultSets=True;";
+        private string connectionString = @"Data Source=(localdb)\ProjectsV12;Initial Catalog=pomodoro;Integrated Security=True;MultipleActiveResultSets=True;";
+        //private string connectionString = @"Data Source=(notvalidlocaldb)\ProjectsV12;Initial Catalog=pomodoro;Integrated Security=True;MultipleActiveResultSets=True;";
 
         public Tag AddNewTag(string tagName)
         {
@@ -96,6 +96,8 @@ namespace PomodoroDAL
                 {
                     foreach (var item in pctx.Entries)
                     {
+                        pctx.Entry(item).Collection(x => x.Tags).Load();
+
                         result.Add(item);
                     }
 

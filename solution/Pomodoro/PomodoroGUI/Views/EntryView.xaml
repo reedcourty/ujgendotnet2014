@@ -24,8 +24,8 @@
             <Label Content="{Binding Path=EntryTimestamp, Mode=OneWay}" Grid.Column="3" Width="140"/>
             <Label Content="Description:" Grid.Column="4" Width="80"/>
             <TextBox Text="{Binding Path=EntryDescription, Mode=TwoWay}" Grid.Column="5" Width="200"/>
-            <!--<Label Content="Tags:" Grid.Column="6"  Width="40"/>
-            <Label Content="{Binding Path=EntryTags, Mode=OneWay}" Grid.Column="7"  Width="200"/>-->
+            <Label Content="Tags:" Grid.Column="6"  Width="40"/>
+            <Label Content="{Binding Path=EntryTags, Mode=OneWay}" Grid.Column="7"  Width="200"/>
         </Grid>
     </Border>
 </UserControl>

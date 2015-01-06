@@ -4,10 +4,12 @@ using GalaSoft.MvvmLight.Messaging;
 using PomodoroGUI.Messaging;
 using PomodoroGUI.PomodoroServiceReference;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Linq;
 
 namespace PomodoroGUI.ViewModels
 {
@@ -58,7 +60,11 @@ namespace PomodoroGUI.ViewModels
 
         public string EntryTags
         {
-            get { return entry.Tags.ToString(); }
+            get 
+            { 
+                var tags = new List<Tag>(entry.Tags);
+                return String.Join(", ", tags.Select(x => x.TagName)); 
+            }
         }
         
 
