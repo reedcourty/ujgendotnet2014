@@ -8,8 +8,8 @@ namespace PomodoroDAL
 {
     public class Methods
     {
-        private string connectionString = @"Data Source=(localdb)\ProjectsV12;Initial Catalog=pomodoro;Integrated Security=True;MultipleActiveResultSets=True;";
-        
+        // private string connectionString = @"Data Source=(localdb)\ProjectsV12;Initial Catalog=pomodoro;Integrated Security=True;MultipleActiveResultSets=True;";
+        private string connectionString = @"Data Source=(notvalidlocaldb)\ProjectsV12;Initial Catalog=pomodoro;Integrated Security=True;MultipleActiveResultSets=True;";
 
         public Tag AddNewTag(string tagName)
         {
@@ -17,7 +17,7 @@ namespace PomodoroDAL
 
             using (PomodoroContext pctx = new PomodoroContext(connectionString))
             {
-                
+
                 try
                 {
                     Tag tag = new PomodoroTag() { TagName = tagName, CreatedAt = DateTime.UtcNow };
@@ -33,7 +33,7 @@ namespace PomodoroDAL
                     if (message.Contains(String.Format("The duplicate key value is ({0}).", tagName)))
                     {
                         result = pctx.Tags.Where(t => t.TagName == tagName).Single();
-                    }                    
+                    }
                 }
                 catch (Exception e)
                 {
@@ -44,9 +44,8 @@ namespace PomodoroDAL
         }
 
 
-        public string AddNewEntry(DateTime timestamp, string description, string tags)
+        public void AddNewEntry(DateTime timestamp, string description, string tags)
         {
-            string result = "OK";
 
             char[] delimiterChars = { ',', ' ' };
 
@@ -55,7 +54,6 @@ namespace PomodoroDAL
 
             using (PomodoroContext pctx = new PomodoroContext(connectionString))
             {
-
                 try
                 {
                     Entry entry = new Entry() { Timestamp = timestamp, Description = description };
@@ -66,7 +64,6 @@ namespace PomodoroDAL
                         var in_db_tag = pctx.Tags.Where(x => x.TagName == tag.TagName).FirstOrDefault();
                         if (in_db_tag != null)
                         {
-
                             entry.Tags.Add(in_db_tag);
                         }
                         else
@@ -74,19 +71,18 @@ namespace PomodoroDAL
                             entry.Tags.Add(tag);
                         }
                     }
-                                       
                     pctx.Entries.Add(entry);
-
-                    
                     pctx.SaveChanges();
                 }
                 catch (Exception)
                 {
-                    
                     throw;
                 }
             }
-            return result;
+
+            // TEST
+            Exception e = new Exception("Something bad happend while we're trying to save the entry! :(", new Exception("inner exception"));
+            throw e;
         }
 
 
@@ -102,11 +98,11 @@ namespace PomodoroDAL
                     {
                         result.Add(item);
                     }
-                   
+
                 }
                 catch (Exception e)
                 {
-                    
+
                     throw e;
                 }
             }
@@ -138,7 +134,7 @@ namespace PomodoroDAL
                 {
                     result = "Something went wrong while trying to update the entry.";
                 }
-                
+
             }
 
             return result;

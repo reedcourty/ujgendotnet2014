@@ -77,19 +77,33 @@ namespace PomodoroService
 
         }
         */
-        public string SaveEntry(DateTime timestamp, string description, string tags)
+        public void SaveEntry(DateTime timestamp, string description, string tags)
         {
-            string result = "OK";
-
-            methods.AddNewEntry(timestamp, description, tags);         
-
-            return result;
-
+            try
+            {
+                methods.AddNewEntry(timestamp, description, tags);
+            }
+            catch (Exception ie)
+            {
+                throw new FaultException(String.Format("Something bad happend while we're trying to save the entry! :( ({0})", ie.Message));
+            }
         }
 
         public List<Entry> GetEntries()
         {
-            return methods.GetEntries();
+            List<Entry> result = new List<Entry>();
+
+            try
+            {
+                result = methods.GetEntries();
+            }
+            catch (Exception ie)
+            {
+
+                throw new FaultException(String.Format("Something bad happend while we're trying to load entries! :( ({0})", ie.Message));
+            }
+
+            return result;
         }
     }
 }

@@ -40,10 +40,10 @@ namespace PomodoroGUI.ViewModels
                         entryList.Add(new EntryViewModel(item));
                     }
                 }
-                catch (System.Exception)
+                catch (System.Exception e)
                 {
                     
-                    MessageBox.Show("There was an error while trying to load entries!");
+                    MessageBox.Show(e.Message);
                 }
 
             

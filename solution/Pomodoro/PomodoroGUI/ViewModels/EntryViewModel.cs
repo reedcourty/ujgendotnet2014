@@ -226,14 +226,21 @@ namespace PomodoroGUI.ViewModels
         {
             DescriptionBoxValue = "What have U done?";
             TagsBoxValue = "";
-            MessageBox.Show("Entry was saved to DB.");
+            MessageBox.Show("Entry was send to DB.");
         }
 
         private async void SaveEntryAsync(object sender, DoWorkEventArgs e)
         {
             using (PomodoroServiceClient psc = new PomodoroServiceClient())
             {
-                await psc.SaveEntryAsync(StartCounterAt, DescriptionBoxValue, TagsBoxValue);
+                try
+                {
+                    await psc.SaveEntryAsync(StartCounterAt, DescriptionBoxValue, TagsBoxValue);
+                }
+                catch (Exception fe)
+                {
+                    MessageBox.Show(fe.Message);
+                }
             }
         }
 

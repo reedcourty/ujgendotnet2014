@@ -55,11 +55,12 @@ namespace PomodoroService
         void UpdateComment(int id, string content, int entryId);
         */
 
-        [OperationContract]
-        string SaveEntry(DateTime timestamp, string description, string tags);
+        [OperationContract()]
+        [FaultContract(typeof(FaultException))]
+        void SaveEntry(DateTime timestamp, string description, string tags);
 
         [OperationContract]
-
+        [FaultContract(typeof(FaultException))]
         List<Entry> GetEntries();
     }
 

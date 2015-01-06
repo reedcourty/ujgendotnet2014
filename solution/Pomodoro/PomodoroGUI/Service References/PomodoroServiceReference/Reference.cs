@@ -342,12 +342,14 @@ namespace PomodoroGUI.PomodoroServiceReference {
         System.Threading.Tasks.Task<string> UpdateEntryAsync(int entryId, string oldDescription, string newDescription);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/SaveEntry", ReplyAction="http://tempuri.org/IPomodoroService/SaveEntryResponse")]
-        string SaveEntry(System.DateTime timestamp, string description, string tags);
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IPomodoroService/SaveEntryFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        void SaveEntry(System.DateTime timestamp, string description, string tags);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/SaveEntry", ReplyAction="http://tempuri.org/IPomodoroService/SaveEntryResponse")]
-        System.Threading.Tasks.Task<string> SaveEntryAsync(System.DateTime timestamp, string description, string tags);
+        System.Threading.Tasks.Task SaveEntryAsync(System.DateTime timestamp, string description, string tags);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetEntries", ReplyAction="http://tempuri.org/IPomodoroService/GetEntriesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IPomodoroService/GetEntriesFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
         PomodoroGUI.PomodoroServiceReference.Entry[] GetEntries();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetEntries", ReplyAction="http://tempuri.org/IPomodoroService/GetEntriesResponse")]
@@ -397,11 +399,11 @@ namespace PomodoroGUI.PomodoroServiceReference {
             return base.Channel.UpdateEntryAsync(entryId, oldDescription, newDescription);
         }
         
-        public string SaveEntry(System.DateTime timestamp, string description, string tags) {
-            return base.Channel.SaveEntry(timestamp, description, tags);
+        public void SaveEntry(System.DateTime timestamp, string description, string tags) {
+            base.Channel.SaveEntry(timestamp, description, tags);
         }
         
-        public System.Threading.Tasks.Task<string> SaveEntryAsync(System.DateTime timestamp, string description, string tags) {
+        public System.Threading.Tasks.Task SaveEntryAsync(System.DateTime timestamp, string description, string tags) {
             return base.Channel.SaveEntryAsync(timestamp, description, tags);
         }
         

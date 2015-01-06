@@ -188,6 +188,12 @@
     <None Include="Service References\PomodoroServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\PomodoroServiceReference\System.ServiceModel.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PomodoroServiceReference\System.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
