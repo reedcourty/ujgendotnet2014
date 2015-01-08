@@ -17,7 +17,7 @@ namespace PomodoroDAL
         }
 
         [DataMember]
-        public int Id { get; set; }
+        public int Azonosito { get; set; }
 
         [DataMember]
         public DateTime Timestamp { get; set; }
@@ -40,7 +40,7 @@ namespace PomodoroDAL
 
         public override string ToString()
         {
-            return String.Format("Entry[Id = {0}, Timestamp = {1}, Description = {2}, Tags({3})]", this.Id, this.Timestamp, this.Description, this.Tags.Count);
+            return String.Format("Entry[Azonosito = {0}, Timestamp = {1}, Description = {2}, Tags({3})]", this.Azonosito, this.Timestamp, this.Description, this.Tags.Count);
         }
     }
 }

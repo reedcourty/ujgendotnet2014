@@ -37,6 +37,8 @@ namespace PomodoroDAL
             modelBuilder.Entity<Tag>().Property(p => p.RowVersion).IsConcurrencyToken();
             modelBuilder.Entity<Comment>().Property(p => p.RowVersion).IsConcurrencyToken();
 
+            modelBuilder.Properties<int>().Where(p => p.Name == "Azonosito").Configure(p => p.IsKey());
+            
             base.OnModelCreating(modelBuilder);
         }
     }

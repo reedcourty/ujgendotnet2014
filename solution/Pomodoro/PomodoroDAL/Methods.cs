@@ -112,7 +112,7 @@ namespace PomodoroDAL
             Entry entryInDb = null;
             using (PomodoroContext pctx = new PomodoroContext(connectionString))
             {
-                entryInDb = pctx.Entries.Select(x => x).Where(x => x.Id == Id).First();
+                entryInDb = pctx.Entries.Select(x => x).Where(x => x.Azonosito == Id).First();
                 pctx.Entry(entryInDb).State = EntityState.Detached;
             }
 
@@ -125,7 +125,7 @@ namespace PomodoroDAL
             Entry entryInDb = null;
             using (PomodoroContext pctx = new PomodoroContext(connectionString))
             {
-                entryInDb = pctx.Entries.Select(x => x).Where(x => x.Id == newEntry.Id).First();
+                entryInDb = pctx.Entries.Select(x => x).Where(x => x.Azonosito == newEntry.Azonosito).First();
                 pctx.Entry(entryInDb).State = EntityState.Detached;
 
                 pctx.Entries.Attach(newEntry);
@@ -143,7 +143,7 @@ namespace PomodoroDAL
             {
                 try
                 {
-                    Entry entryInDB = pctx.Entries.Where(x => x.Id == entryId).FirstOrDefault();
+                    Entry entryInDB = pctx.Entries.Where(x => x.Azonosito == entryId).FirstOrDefault();
 
                     if (entryInDB.Description == oldDescription)
                     {

@@ -19,8 +19,9 @@ namespace PomodoroDAL
         public string Content { get; set; }
 
         [DataMember]
+        
         [Key, ForeignKey("Entry")]
-        public int EntryId { get; set; }
+        public int EntryAzonosito { get; set; }
 
         [DataMember]
         public Entry Entry { get; set; }
