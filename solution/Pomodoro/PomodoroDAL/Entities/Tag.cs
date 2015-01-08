@@ -26,5 +26,8 @@ namespace PomodoroDAL
         // LazyLoading off:
         [DataMember]
         public ICollection<Entry> Entries { get; private set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
     }
 }

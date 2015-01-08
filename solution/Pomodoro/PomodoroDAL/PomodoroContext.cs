@@ -30,6 +30,15 @@ namespace PomodoroDAL
         {
 
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Entry>().Property(p => p.RowVersion).IsConcurrencyToken();
+            modelBuilder.Entity<Tag>().Property(p => p.RowVersion).IsConcurrencyToken();
+            modelBuilder.Entity<Comment>().Property(p => p.RowVersion).IsConcurrencyToken();
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 
 }

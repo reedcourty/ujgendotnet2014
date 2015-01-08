@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -33,5 +34,13 @@ namespace PomodoroDAL
 
         [DataMember]
         public Comment Comment { get; set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("Entry[Id = {0}, Timestamp = {1}, Description = {2}, Tags({3})]", this.Id, this.Timestamp, this.Description, this.Tags.Count);
+        }
     }
 }

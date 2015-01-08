@@ -10,7 +10,21 @@ namespace PomodoroDAL
     {
         static void Main(string[] args)
         {
+
+
+            Methods methods = new Methods();
+
+            Entry entry = methods.GetEntry(2);
+
+            entry.Description = "Mod";
+            entry.Timestamp = DateTime.UtcNow;
+
+            Console.WriteLine(entry);
+
+            methods.UpdateEntry(entry);
+
             
+            /*
             string connectionString = @"Data Source=(localdb)\ProjectsV12;Initial Catalog=pomodoro;Integrated Security=True;MultipleActiveResultSets=True;";
             using (PomodoroContext pctx = new PomodoroContext(connectionString))
             {
@@ -57,6 +71,7 @@ namespace PomodoroDAL
                     Console.ReadLine();
 	            }
             }
+             * */
         }
     }
 

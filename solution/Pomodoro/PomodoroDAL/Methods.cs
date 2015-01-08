@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Core.Objects.DataClasses;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,9 +83,6 @@ namespace PomodoroDAL
                 }
             }
 
-            // TEST
-            Exception e = new Exception("Something bad happend while we're trying to save the entry! :(", new Exception("inner exception"));
-            throw e;
         }
 
 
@@ -92,24 +92,47 @@ namespace PomodoroDAL
 
             using (PomodoroContext pctx = new PomodoroContext(connectionString))
             {
-                try
+
+                foreach (var item in pctx.Entries)
                 {
-                    foreach (var item in pctx.Entries)
-                    {
-                        pctx.Entry(item).Collection(x => x.Tags).Load();
+                    pctx.Entry(item).Collection(x => x.Tags).Load();
 
-                        result.Add(item);
-                    }
+                    ((IObjectContextAdapter)pctx).ObjectContext.Detach(item);
 
-                }
-                catch (Exception e)
-                {
-
-                    throw e;
+                    result.Add(item);
                 }
             }
 
             return result;
+        }
+
+
+        public Entry GetEntry(int Id)
+        {
+            Entry entryInDb = null;
+            using (PomodoroContext pctx = new PomodoroContext(connectionString))
+            {
+                entryInDb = pctx.Entries.Select(x => x).Where(x => x.Id == Id).First();
+                pctx.Entry(entryInDb).State = EntityState.Detached;
+            }
+
+            return entryInDb;
+        }
+
+
+        public void UpdateEntry(Entry newEntry)
+        {
+            Entry entryInDb = null;
+            using (PomodoroContext pctx = new PomodoroContext(connectionString))
+            {
+                entryInDb = pctx.Entries.Select(x => x).Where(x => x.Id == newEntry.Id).First();
+                pctx.Entry(entryInDb).State = EntityState.Detached;
+
+                pctx.Entries.Attach(newEntry);
+                pctx.Entry(newEntry).State = EntityState.Modified;
+
+                pctx.SaveChanges();
+            }
         }
 
         public string UpdateEntry(int entryId, string oldDescription, string newDescription)
