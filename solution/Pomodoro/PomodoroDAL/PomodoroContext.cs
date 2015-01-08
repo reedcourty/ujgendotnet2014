@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PomodoroDAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace PomodoroDAL
 
         public DbSet<Comment> Comments { get; set; }
 
+        public DbSet<Dummy> Dummies { get; set; }
+
         public PomodoroContext(string connectionString)
             : base(connectionString)
         {
@@ -37,7 +40,7 @@ namespace PomodoroDAL
             modelBuilder.Entity<Tag>().Property(p => p.RowVersion).IsConcurrencyToken();
             modelBuilder.Entity<Comment>().Property(p => p.RowVersion).IsConcurrencyToken();
 
-            modelBuilder.Properties<int>().Where(p => p.Name == "Azonosito").Configure(p => p.IsKey());
+            modelBuilder.Properties<int>().Where(p => p.Name.EndsWith("Azonosito")).Configure(p => p.IsKey());
             
             base.OnModelCreating(modelBuilder);
         }

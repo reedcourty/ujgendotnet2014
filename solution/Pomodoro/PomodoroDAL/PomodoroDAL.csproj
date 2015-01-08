@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Comment.cs" />
+    <Compile Include="Entities\Dummy.cs" />
     <Compile Include="Entities\Entry.cs" />
     <Compile Include="PomodoroContext.cs" />
     <Compile Include="Entities\PomodoroTag.cs" />
