@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Linq;
+using Pomodoro.Utils;
+using System.Diagnostics;
 
 namespace PomodoroGUI.ViewModels
 {
@@ -29,7 +31,7 @@ namespace PomodoroGUI.ViewModels
         public int EntryId
         {
             get { return entry.Id; }
-            set { entry.Id = value; RaisePropertyChanged("EntryId"); }
+            set { entry.Id = value; RaisePropertyChanged("EntryId"); Logger.TraceEvent(TraceEventType.Verbose, 0, "EntryId property changed"); }
         }
 
 
@@ -38,7 +40,7 @@ namespace PomodoroGUI.ViewModels
         public DateTime EntryTimestamp
         {
             get { return entry.Timestamp; }
-            set { entry.Timestamp = value; RaisePropertyChanged("EntryTimestamp"); }
+            set { entry.Timestamp = value; RaisePropertyChanged("EntryTimestamp"); Logger.TraceEvent(TraceEventType.Verbose, 0, "EntryTimestamp property changed"); }
         }
 
         private string oldDescription;
@@ -51,6 +53,7 @@ namespace PomodoroGUI.ViewModels
                 oldDescription = entry.Description;
                 entry.Description = value;
                 RaisePropertyChanged("EntryDescription");
+                Logger.TraceEvent(TraceEventType.Verbose, 0, "EntryDescription property changed");
             }
         }
 
