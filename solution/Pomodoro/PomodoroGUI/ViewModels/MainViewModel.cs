@@ -31,12 +31,10 @@ namespace PomodoroGUI.ViewModels
         {
             switch (receivedMessage.Type)
             {
-
                 case PomodoroGeneralMessage.MessageType.LoadEntryList:
                     Logger.TraceEvent(TraceEventType.Verbose, 10, receivedMessage.ToString());
                     LoadEntryListCommand.Execute(null);
-                    break;
-                
+                    break;   
             }
         }
 

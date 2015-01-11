@@ -30,12 +30,12 @@ namespace PomodoroService
             return new Tag();
         }
 
-
-        public Entry GetEntry(int id) {
-            return new Entry();
+        */
+        public Entry GetEntryById(int id) {
+            return methods.GetEntryById(id);
         }
 
-
+        /*
         public Comment GetComment(int id)
         {
             return new Comment();
@@ -66,9 +66,28 @@ namespace PomodoroService
         }
         */
 
-        public string UpdateEntry(int entryId, string oldDescription, string newDescription)
+        public string OldUpdateEntry(int entryId, string oldDescription, string newDescription)
         {
             return methods.UpdateEntry(entryId, oldDescription, newDescription);
+        }
+
+        public Entry UpdateEntry(Entry newEntry)
+        {
+            Entry result = null;
+            try
+            {
+                result = methods.UpdateEntry(newEntry);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateConcurrencyException ce)
+            {
+
+                throw new FaultException(String.Format("The entry is already modified! :("));
+            }
+            catch (Exception ie)
+            {
+                throw new FaultException(String.Format("Something bad happend while we're trying to update the entry! :( ({0})", ie.Message));
+            }
+            return result;
         }
 
         /*

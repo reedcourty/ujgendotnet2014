@@ -35,6 +35,7 @@ namespace PomodoroDAL
         [DataMember]
         public Comment Comment { get; set; }
 
+        [DataMember]
         [Timestamp]
         public byte[] RowVersion { get; set; }
 

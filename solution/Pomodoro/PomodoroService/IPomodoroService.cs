@@ -21,12 +21,12 @@ namespace PomodoroService
 
         [OperationContract]
         Tag GetTag(int id);
-
+        */
 
         [OperationContract]
-        Entry GetEntry(int id);
+        Entry GetEntryById(int id);
 
-
+        /*
         [OperationContract]
         Comment GetComment(int id);
         */
@@ -48,7 +48,11 @@ namespace PomodoroService
 
         */
         [OperationContract]
-        string UpdateEntry(int entryId, string oldDescription, string newDescription);
+        string OldUpdateEntry(int entryId, string oldDescription, string newDescription);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultException))]
+        Entry UpdateEntry(Entry newEntry);
 
         /*
         [OperationContract]

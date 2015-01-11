@@ -25,6 +25,7 @@ namespace PomodoroGUI.ViewModels
     {
 
         Entry entry;
+        Entry originalEntry = null;
 
         private int entryId;
 
@@ -43,14 +44,17 @@ namespace PomodoroGUI.ViewModels
             set { entry.Timestamp = value; RaisePropertyChanged("EntryTimestamp"); Logger.TraceEvent(TraceEventType.Verbose, 0, "EntryTimestamp property changed"); }
         }
 
-        private string oldDescription;
 
         public string EntryDescription
         {
             get { return entry.Description; }
             set 
             {
-                oldDescription = entry.Description;
+                if (originalEntry == null)
+                {
+                    originalEntry = new Entry() { Id = entry.Id, Timestamp = entry.Timestamp, Description = entry.Description, Tags = entry.Tags, RowVersion = entry.RowVersion };
+                }
+                
                 entry.Description = value;
                 RaisePropertyChanged("EntryDescription");
                 Logger.TraceEvent(TraceEventType.Verbose, 0, "EntryDescription property changed");
@@ -170,28 +174,54 @@ namespace PomodoroGUI.ViewModels
 
             BackgroundWorker bw = new BackgroundWorker();
 
-            bw.DoWork += (s, ev) => UpdateEntry(modifiedEntry.Id, oldDescription, modifiedEntry.Description);
-            
+            bw.DoWork += (s, ev) => UpdateEntry(modifiedEntry, ev);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(DoStuffAfterUpdateCompleted);
             
             bw.RunWorkerAsync();
             
-            // var ize = UpdateEntryAsync(modifiedEntry.Id, oldDescription, modifiedEntry.Description);
             
-           
+            // var ize = UpdateEntryAsync(modifiedEntry.Id, oldDescription, modifiedEntry.Description);
+
+            
+            // Messenger.Default.Send(new PomodoroGeneralMessage { Type = PomodoroGeneralMessage.MessageType.LoadEntryList });
 
         }
 
-        private string UpdateEntry(int entryId, string oldDescription, string newDescription)
+        private void DoStuffAfterUpdateCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            Entry resultEntry = (Entry)e.Result;
+            entry.RowVersion = resultEntry.RowVersion;
+            entry.Description = resultEntry.Description;
+            // TODO: A frissítést még meg kell oldani.
+            // EntryDescription = resultEntry.Description;
+            originalEntry = null;
+        }
 
-            string result = "";
-
+        private Entry UpdateEntry(Entry modifiedEntry, DoWorkEventArgs e)
+        {
+            Entry result = null;
             using (PomodoroServiceClient psc = new PomodoroServiceClient())
             {
-                result = psc.UpdateEntry(entryId, oldDescription, newDescription);
-                MessageBox.Show(result);
-            }
+                try
+                {
+                    result = psc.UpdateEntry(modifiedEntry);
+                }
+                catch (Exception fe)
+                {
+                    try
+                    {
+                        result = psc.GetEntryById(modifiedEntry.Id);
+                    }
+                    catch (Exception gebie)
+                    {
 
+                        MessageBox.Show(gebie.Message);
+                    }
+                    
+                    MessageBox.Show(fe.Message);
+                }
+            }
+            e.Result = result;
             return result;
         }
 

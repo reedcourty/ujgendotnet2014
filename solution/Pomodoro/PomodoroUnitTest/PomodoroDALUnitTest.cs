@@ -9,7 +9,7 @@ namespace PomodoroUnitTest
     public class PomodoroDALUnitTest
     {
         [TestMethod]
-        [IgnoreAttribute]
+        // [IgnoreAttribute]
         public void TestClearDB()
         {
             // Arrange:
@@ -25,7 +25,7 @@ namespace PomodoroUnitTest
         }
 
         [TestMethod]
-        [IgnoreAttribute]
+        // [IgnoreAttribute]
         public void TestInitDB()
         {
             // Arrange:
@@ -42,7 +42,7 @@ namespace PomodoroUnitTest
 
 
         [TestMethod]
-        [IgnoreAttribute]
+        // [IgnoreAttribute]
         public void TestAddNewComment()
         {
             // Arrange:
@@ -61,7 +61,7 @@ namespace PomodoroUnitTest
 
 
         [TestMethod]
-        [IgnoreAttribute]
+        // [IgnoreAttribute]
         public void TestAddNewEntry()
         {
             // Arrange:
@@ -79,7 +79,7 @@ namespace PomodoroUnitTest
 
 
         [TestMethod]
-        [IgnoreAttribute]
+        // [IgnoreAttribute]
         public void TestAddNewEntryFromElements()
         {
             // Arrange:
@@ -98,7 +98,7 @@ namespace PomodoroUnitTest
 
 
         [TestMethod]
-        [IgnoreAttribute]
+        // [IgnoreAttribute]
         public void TestAddNewTag()
         {
             // Arrange:
@@ -115,7 +115,7 @@ namespace PomodoroUnitTest
 
 
         [TestMethod]
-        [IgnoreAttribute]
+        // [IgnoreAttribute]
         public void TestGetEntryById()
         {
             // Arrange:
@@ -133,7 +133,7 @@ namespace PomodoroUnitTest
 
 
         [TestMethod]
-        [IgnoreAttribute]
+        // [IgnoreAttribute]
         public void TestUpdateEntry()
         {
             // Arrange:
@@ -157,7 +157,7 @@ namespace PomodoroUnitTest
 
 
         [TestMethod]
-        [IgnoreAttribute]
+        // [IgnoreAttribute]
         public void TestGetEntries()
         {
             // Arrange:
@@ -175,7 +175,7 @@ namespace PomodoroUnitTest
 
 
         [TestMethod]
-        [IgnoreAttribute]
+        // [IgnoreAttribute]
         public void TestGetTags()
         {
             // Arrange:
@@ -193,7 +193,7 @@ namespace PomodoroUnitTest
 
 
         [TestMethod]
-        [IgnoreAttribute]
+        // [IgnoreAttribute]
         public void TestGetComments()
         {
             // Arrange:
@@ -211,7 +211,7 @@ namespace PomodoroUnitTest
 
 
         [TestMethod]
-        [IgnoreAttribute]
+        // [IgnoreAttribute]
         [ExpectedException(typeof(System.Data.Entity.Infrastructure.DbUpdateConcurrencyException))]
         public void TestOptimisticConcurrency()
         {

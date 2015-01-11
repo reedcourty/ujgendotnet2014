@@ -219,8 +219,10 @@ namespace PomodoroDAL
         }
 
 
-        public void UpdateEntry(Entry newEntry)
+        public Entry UpdateEntry(Entry newEntry)
         {
+            Entry result = null;
+            Logger.TraceEvent(TraceEventType.Verbose, 10, newEntry.ToString());
             Entry entryInDb = null;
             using (PomodoroContext pctx = new PomodoroContext(connectionString))
             {
@@ -231,7 +233,9 @@ namespace PomodoroDAL
                 pctx.Entry(newEntry).State = EntityState.Modified;
 
                 pctx.SaveChanges();
+                result = pctx.Entries.Select(x => x).Where(x => x.Id == newEntry.Id).First();
             }
+            return result;
         }
 
 

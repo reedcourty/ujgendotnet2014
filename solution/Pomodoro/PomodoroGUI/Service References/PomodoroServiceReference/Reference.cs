@@ -15,117 +15,7 @@ namespace PomodoroGUI.PomodoroServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Tag", Namespace="http://schemas.datacontract.org/2004/07/PomodoroDAL")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PomodoroGUI.PomodoroServiceReference.PomodoroTag))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PomodoroGUI.PomodoroServiceReference.ProjectTag))]
-    public partial class Tag : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PomodoroGUI.PomodoroServiceReference.Entry[] EntriesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TagNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PomodoroGUI.PomodoroServiceReference.Entry[] Entries {
-            get {
-                return this.EntriesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EntriesField, value) != true)) {
-                    this.EntriesField = value;
-                    this.RaisePropertyChanged("Entries");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TagName {
-            get {
-                return this.TagNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TagNameField, value) != true)) {
-                    this.TagNameField = value;
-                    this.RaisePropertyChanged("TagName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PomodoroTag", Namespace="http://schemas.datacontract.org/2004/07/PomodoroDAL")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PomodoroGUI.PomodoroServiceReference.ProjectTag))]
-    public partial class PomodoroTag : PomodoroGUI.PomodoroServiceReference.Tag {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime CreatedAtField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime CreatedAt {
-            get {
-                return this.CreatedAtField;
-            }
-            set {
-                if ((this.CreatedAtField.Equals(value) != true)) {
-                    this.CreatedAtField = value;
-                    this.RaisePropertyChanged("CreatedAt");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ProjectTag", Namespace="http://schemas.datacontract.org/2004/07/PomodoroDAL")]
-    [System.SerializableAttribute()]
-    public partial class ProjectTag : PomodoroGUI.PomodoroServiceReference.PomodoroTag {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PriorityField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Priority {
-            get {
-                return this.PriorityField;
-            }
-            set {
-                if ((this.PriorityField.Equals(value) != true)) {
-                    this.PriorityField = value;
-                    this.RaisePropertyChanged("Priority");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Entry", Namespace="http://schemas.datacontract.org/2004/07/PomodoroDAL")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Entry", Namespace="http://schemas.datacontract.org/2004/07/PomodoroDAL", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class Entry : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -140,6 +30,9 @@ namespace PomodoroGUI.PomodoroServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] RowVersionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private PomodoroGUI.PomodoroServiceReference.Tag[] TagsField;
@@ -192,6 +85,19 @@ namespace PomodoroGUI.PomodoroServiceReference {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] RowVersion {
+            get {
+                return this.RowVersionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RowVersionField, value) != true)) {
+                    this.RowVersionField = value;
+                    this.RaisePropertyChanged("RowVersion");
                 }
             }
         }
@@ -251,7 +157,10 @@ namespace PomodoroGUI.PomodoroServiceReference {
         private PomodoroGUI.PomodoroServiceReference.Entry EntryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int EntryIdField;
+        private int EntryAzonositoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] RowVersionField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -303,14 +212,27 @@ namespace PomodoroGUI.PomodoroServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int EntryId {
+        public int EntryAzonosito {
             get {
-                return this.EntryIdField;
+                return this.EntryAzonositoField;
             }
             set {
-                if ((this.EntryIdField.Equals(value) != true)) {
-                    this.EntryIdField = value;
-                    this.RaisePropertyChanged("EntryId");
+                if ((this.EntryAzonositoField.Equals(value) != true)) {
+                    this.EntryAzonositoField = value;
+                    this.RaisePropertyChanged("EntryAzonosito");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] RowVersion {
+            get {
+                return this.RowVersionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RowVersionField, value) != true)) {
+                    this.RowVersionField = value;
+                    this.RaisePropertyChanged("RowVersion");
                 }
             }
         }
@@ -325,9 +247,141 @@ namespace PomodoroGUI.PomodoroServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Tag", Namespace="http://schemas.datacontract.org/2004/07/PomodoroDAL", IsReference=true)]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PomodoroGUI.PomodoroServiceReference.PomodoroTag))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PomodoroGUI.PomodoroServiceReference.ProjectTag))]
+    public partial class Tag : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PomodoroGUI.PomodoroServiceReference.Entry[] EntriesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] RowVersionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TagNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PomodoroGUI.PomodoroServiceReference.Entry[] Entries {
+            get {
+                return this.EntriesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntriesField, value) != true)) {
+                    this.EntriesField = value;
+                    this.RaisePropertyChanged("Entries");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] RowVersion {
+            get {
+                return this.RowVersionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RowVersionField, value) != true)) {
+                    this.RowVersionField = value;
+                    this.RaisePropertyChanged("RowVersion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TagName {
+            get {
+                return this.TagNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TagNameField, value) != true)) {
+                    this.TagNameField = value;
+                    this.RaisePropertyChanged("TagName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PomodoroTag", Namespace="http://schemas.datacontract.org/2004/07/PomodoroDAL", IsReference=true)]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PomodoroGUI.PomodoroServiceReference.ProjectTag))]
+    public partial class PomodoroTag : PomodoroGUI.PomodoroServiceReference.Tag {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CreatedAtField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CreatedAt {
+            get {
+                return this.CreatedAtField;
+            }
+            set {
+                if ((this.CreatedAtField.Equals(value) != true)) {
+                    this.CreatedAtField = value;
+                    this.RaisePropertyChanged("CreatedAt");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProjectTag", Namespace="http://schemas.datacontract.org/2004/07/PomodoroDAL", IsReference=true)]
+    [System.SerializableAttribute()]
+    public partial class ProjectTag : PomodoroGUI.PomodoroServiceReference.PomodoroTag {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PriorityField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
+                }
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PomodoroServiceReference.IPomodoroService")]
     public interface IPomodoroService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetEntryById", ReplyAction="http://tempuri.org/IPomodoroService/GetEntryByIdResponse")]
+        PomodoroGUI.PomodoroServiceReference.Entry GetEntryById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/GetEntryById", ReplyAction="http://tempuri.org/IPomodoroService/GetEntryByIdResponse")]
+        System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Entry> GetEntryByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/AddTag", ReplyAction="http://tempuri.org/IPomodoroService/AddTagResponse")]
         PomodoroGUI.PomodoroServiceReference.Tag AddTag(string tagName);
@@ -335,11 +389,18 @@ namespace PomodoroGUI.PomodoroServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/AddTag", ReplyAction="http://tempuri.org/IPomodoroService/AddTagResponse")]
         System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Tag> AddTagAsync(string tagName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/UpdateEntry", ReplyAction="http://tempuri.org/IPomodoroService/UpdateEntryResponse")]
-        string UpdateEntry(int entryId, string oldDescription, string newDescription);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/OldUpdateEntry", ReplyAction="http://tempuri.org/IPomodoroService/OldUpdateEntryResponse")]
+        string OldUpdateEntry(int entryId, string oldDescription, string newDescription);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/OldUpdateEntry", ReplyAction="http://tempuri.org/IPomodoroService/OldUpdateEntryResponse")]
+        System.Threading.Tasks.Task<string> OldUpdateEntryAsync(int entryId, string oldDescription, string newDescription);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/UpdateEntry", ReplyAction="http://tempuri.org/IPomodoroService/UpdateEntryResponse")]
-        System.Threading.Tasks.Task<string> UpdateEntryAsync(int entryId, string oldDescription, string newDescription);
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IPomodoroService/UpdateEntryFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        PomodoroGUI.PomodoroServiceReference.Entry UpdateEntry(PomodoroGUI.PomodoroServiceReference.Entry newEntry);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/UpdateEntry", ReplyAction="http://tempuri.org/IPomodoroService/UpdateEntryResponse")]
+        System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Entry> UpdateEntryAsync(PomodoroGUI.PomodoroServiceReference.Entry newEntry);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPomodoroService/SaveEntry", ReplyAction="http://tempuri.org/IPomodoroService/SaveEntryResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IPomodoroService/SaveEntryFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
@@ -383,6 +444,14 @@ namespace PomodoroGUI.PomodoroServiceReference {
                 base(binding, remoteAddress) {
         }
         
+        public PomodoroGUI.PomodoroServiceReference.Entry GetEntryById(int id) {
+            return base.Channel.GetEntryById(id);
+        }
+        
+        public System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Entry> GetEntryByIdAsync(int id) {
+            return base.Channel.GetEntryByIdAsync(id);
+        }
+        
         public PomodoroGUI.PomodoroServiceReference.Tag AddTag(string tagName) {
             return base.Channel.AddTag(tagName);
         }
@@ -391,12 +460,20 @@ namespace PomodoroGUI.PomodoroServiceReference {
             return base.Channel.AddTagAsync(tagName);
         }
         
-        public string UpdateEntry(int entryId, string oldDescription, string newDescription) {
-            return base.Channel.UpdateEntry(entryId, oldDescription, newDescription);
+        public string OldUpdateEntry(int entryId, string oldDescription, string newDescription) {
+            return base.Channel.OldUpdateEntry(entryId, oldDescription, newDescription);
         }
         
-        public System.Threading.Tasks.Task<string> UpdateEntryAsync(int entryId, string oldDescription, string newDescription) {
-            return base.Channel.UpdateEntryAsync(entryId, oldDescription, newDescription);
+        public System.Threading.Tasks.Task<string> OldUpdateEntryAsync(int entryId, string oldDescription, string newDescription) {
+            return base.Channel.OldUpdateEntryAsync(entryId, oldDescription, newDescription);
+        }
+        
+        public PomodoroGUI.PomodoroServiceReference.Entry UpdateEntry(PomodoroGUI.PomodoroServiceReference.Entry newEntry) {
+            return base.Channel.UpdateEntry(newEntry);
+        }
+        
+        public System.Threading.Tasks.Task<PomodoroGUI.PomodoroServiceReference.Entry> UpdateEntryAsync(PomodoroGUI.PomodoroServiceReference.Entry newEntry) {
+            return base.Channel.UpdateEntryAsync(newEntry);
         }
         
         public void SaveEntry(System.DateTime timestamp, string description, string tags) {

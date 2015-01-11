@@ -26,6 +26,7 @@ namespace PomodoroDAL
         [DataMember]
         public Entry Entry { get; set; }
 
+        [DataMember]
         [Timestamp]
         public byte[] RowVersion { get; set; }
     }

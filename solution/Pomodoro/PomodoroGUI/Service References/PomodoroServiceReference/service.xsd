@@ -1,6 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.datacontract.org/2004/07/PomodoroDAL" />
+  <xs:element name="GetEntryById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEntryByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="GetEntryByIdResult" nillable="true" type="q1:Entry" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddTag">
     <xs:complexType>
       <xs:sequence>
@@ -11,11 +25,11 @@
   <xs:element name="AddTagResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="AddTagResult" nillable="true" type="q1:Tag" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="AddTagResult" nillable="true" type="q2:Tag" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateEntry">
+  <xs:element name="OldUpdateEntry">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="entryId" type="xs:int" />
@@ -24,10 +38,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="OldUpdateEntryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OldUpdateEntryResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateEntry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="newEntry" nillable="true" type="q3:Entry" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="UpdateEntryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="UpdateEntryResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="UpdateEntryResult" nillable="true" type="q4:Entry" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -53,7 +81,7 @@
   <xs:element name="GetEntriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="GetEntriesResult" nillable="true" type="q2:ArrayOfEntry" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PomodoroDAL" minOccurs="0" name="GetEntriesResult" nillable="true" type="q5:ArrayOfEntry" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -9,17 +9,32 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IPomodoroService_GetEntryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntryById" />
+  </wsdl:message>
+  <wsdl:message name="IPomodoroService_GetEntryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntryByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IPomodoroService_AddTag_InputMessage">
     <wsdl:part name="parameters" element="tns:AddTag" />
   </wsdl:message>
   <wsdl:message name="IPomodoroService_AddTag_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddTagResponse" />
   </wsdl:message>
+  <wsdl:message name="IPomodoroService_OldUpdateEntry_InputMessage">
+    <wsdl:part name="parameters" element="tns:OldUpdateEntry" />
+  </wsdl:message>
+  <wsdl:message name="IPomodoroService_OldUpdateEntry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OldUpdateEntryResponse" />
+  </wsdl:message>
   <wsdl:message name="IPomodoroService_UpdateEntry_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateEntry" />
   </wsdl:message>
   <wsdl:message name="IPomodoroService_UpdateEntry_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateEntryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPomodoroService_UpdateEntry_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q1:FaultException" />
   </wsdl:message>
   <wsdl:message name="IPomodoroService_SaveEntry_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveEntry" />
@@ -28,7 +43,7 @@
     <wsdl:part name="parameters" element="tns:SaveEntryResponse" />
   </wsdl:message>
   <wsdl:message name="IPomodoroService_SaveEntry_FaultExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q1:FaultException" />
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q2:FaultException" />
   </wsdl:message>
   <wsdl:message name="IPomodoroService_GetEntries_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEntries" />
@@ -37,16 +52,25 @@
     <wsdl:part name="parameters" element="tns:GetEntriesResponse" />
   </wsdl:message>
   <wsdl:message name="IPomodoroService_GetEntries_FaultExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q2:FaultException" />
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q3:FaultException" />
   </wsdl:message>
   <wsdl:portType name="IPomodoroService">
+    <wsdl:operation name="GetEntryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/GetEntryById" message="tns:IPomodoroService_GetEntryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/GetEntryByIdResponse" message="tns:IPomodoroService_GetEntryById_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddTag">
       <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/AddTag" message="tns:IPomodoroService_AddTag_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/AddTagResponse" message="tns:IPomodoroService_AddTag_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="OldUpdateEntry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/OldUpdateEntry" message="tns:IPomodoroService_OldUpdateEntry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/OldUpdateEntryResponse" message="tns:IPomodoroService_OldUpdateEntry_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateEntry">
       <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/UpdateEntry" message="tns:IPomodoroService_UpdateEntry_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPomodoroService/UpdateEntryResponse" message="tns:IPomodoroService_UpdateEntry_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPomodoroService/UpdateEntryFaultExceptionFault" name="FaultExceptionFault" message="tns:IPomodoroService_UpdateEntry_FaultExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="SaveEntry">
       <wsdl:input wsaw:Action="http://tempuri.org/IPomodoroService/SaveEntry" message="tns:IPomodoroService_SaveEntry_InputMessage" />
@@ -61,8 +85,26 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IPomodoroService" type="tns:IPomodoroService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEntryById">
+      <soap:operation soapAction="http://tempuri.org/IPomodoroService/GetEntryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddTag">
       <soap:operation soapAction="http://tempuri.org/IPomodoroService/AddTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OldUpdateEntry">
+      <soap:operation soapAction="http://tempuri.org/IPomodoroService/OldUpdateEntry" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -78,6 +120,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="SaveEntry">
       <soap:operation soapAction="http://tempuri.org/IPomodoroService/SaveEntry" style="document" />
