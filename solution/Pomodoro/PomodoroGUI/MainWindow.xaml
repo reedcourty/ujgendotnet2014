@@ -7,32 +7,37 @@
     <TabControl HorizontalAlignment="Left" VerticalAlignment="Stretch">
         <TabItem Header="Main">
             <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            <views:PomodoroTimerView Grid.Row="0" HorizontalAlignment="Left"/>
-            <views:NewEntryView Grid.Row="1"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <views:PomodoroTimerView Grid.Row="0" HorizontalAlignment="Left"/>
+                <views:NewEntryView Grid.Row="1"/>
             </Grid>
         </TabItem>
         <TabItem Header="Log">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="320"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
                 </Grid.RowDefinitions>
-                    
+
                 <DockPanel LastChildFill="False" Grid.Row="0">
-                    <ListView DockPanel.Dock="Left" ItemsSource="{Binding Path=EntryList}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <views:EntryView/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+
+
+                        <ListView DockPanel.Dock="Left" ItemsSource="{Binding Path=EntryList}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <views:EntryView/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </ScrollViewer>
                 </DockPanel>
                 <Button Content="Reload" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Width="75" Margin="5,5,5,5" Command="{Binding LoadEntryListCommand}" />
-                
+
             </Grid>
         </TabItem>
     </TabControl>
