@@ -1,7 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using PomodoroGUI.PomodoroServiceReference;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Input;
 
 namespace PomodoroGUI.ViewModels
 {
@@ -25,8 +27,29 @@ namespace PomodoroGUI.ViewModels
         {
             get { return entryList; }
         }
+
+
+        #region Commands
+
+        private RelayCommand<object> loadEntryListCommand;
+        public ICommand LoadEntryListCommand
+        {
+            get
+            {
+                if (loadEntryListCommand == null)
+                {
+                    loadEntryListCommand = new RelayCommand<object>(s => LoadEntryList(), null);
+                }
+                return loadEntryListCommand;
+            }
+        }
+
+        #endregion
+
+        
         public async void LoadEntryList()
         {
+            entryList.Clear();
 
             using (PomodoroServiceClient psc = new PomodoroServiceClient())
             {

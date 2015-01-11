@@ -17,7 +17,12 @@
         </TabItem>
         <TabItem Header="Log">
             <Grid>
-                <DockPanel LastChildFill="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                    
+                <DockPanel LastChildFill="False" Grid.Row="0">
                     <ListView DockPanel.Dock="Left" ItemsSource="{Binding Path=EntryList}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -26,6 +31,8 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </DockPanel>
+                <Button Content="Reload" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Width="75" Margin="5,5,5,5" Command="{Binding LoadEntryListCommand}" />
+                
             </Grid>
         </TabItem>
     </TabControl>
