@@ -1,7 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
+using Pomodoro.Utils;
+using PomodoroGUI.Messaging;
 using PomodoroGUI.PomodoroServiceReference;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 
@@ -20,6 +24,20 @@ namespace PomodoroGUI.ViewModels
         /// </summary>
         public MainViewModel()
         {
+            Messenger.Default.Register<PomodoroGeneralMessage>(this, ProcessMessages);
+        }
+
+        private void ProcessMessages(PomodoroGeneralMessage receivedMessage)
+        {
+            switch (receivedMessage.Type)
+            {
+
+                case PomodoroGeneralMessage.MessageType.LoadEntryList:
+                    Logger.TraceEvent(TraceEventType.Verbose, 10, receivedMessage.ToString());
+                    LoadEntryListCommand.Execute(null);
+                    break;
+                
+            }
         }
 
         private ObservableCollection<EntryViewModel> entryList = new ObservableCollection<EntryViewModel>();

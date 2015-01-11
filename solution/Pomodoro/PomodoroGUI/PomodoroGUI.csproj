@@ -104,6 +104,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Messaging\PomodoroGeneralMessage.cs" />
     <Compile Include="Messaging\PomodoroTimerMessage.cs" />
     <Compile Include="Service References\PomodoroServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>

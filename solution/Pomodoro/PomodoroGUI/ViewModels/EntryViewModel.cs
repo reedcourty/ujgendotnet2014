@@ -236,6 +236,7 @@ namespace PomodoroGUI.ViewModels
             DescriptionBoxValue = "What have U done?";
             TagsBoxValue = "";
             MessageBox.Show("Entry was send to DB.");
+            Messenger.Default.Send(new PomodoroGeneralMessage { Type = PomodoroGeneralMessage.MessageType.LoadEntryList });
         }
 
         private async void SaveEntryAsync(object sender, DoWorkEventArgs e)
