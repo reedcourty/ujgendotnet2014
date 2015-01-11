@@ -81,7 +81,7 @@ namespace PomodoroService
         {
             try
             {
-                methods.AddNewEntry(timestamp, description, tags);
+                methods.AddNewEntryFromElements(timestamp, description, tags);
             }
             catch (Exception ie)
             {

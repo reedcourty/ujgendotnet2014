@@ -29,5 +29,21 @@ namespace PomodoroDAL
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
+
+        public override string ToString()
+        {
+            int count;
+
+            if (this.Entries != null)
+            {
+                count = this.Entries.Count;
+            }
+            else
+            {
+                count = 0;
+            }
+            
+            return String.Format("Tag[TagName = {0}, Entries({1})]", this.TagName, count);
+        }
     }
 }

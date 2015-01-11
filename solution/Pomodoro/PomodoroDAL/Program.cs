@@ -14,14 +14,23 @@ namespace PomodoroDAL
 
             Methods methods = new Methods();
 
-            Entry entry = methods.GetEntry(2);
+            methods.InitDB();
+            string expected = "8 10 8";
+            string actual = String.Format("{0} {1} {2}", methods.GetEntries().Count, methods.GetTags().Count, methods.GetComments().Count);
+            Console.WriteLine(expected);
+            Console.WriteLine(actual);
+            Console.WriteLine(expected == actual);
 
-            entry.Description = "Mod";
-            entry.Timestamp = DateTime.UtcNow;
 
-            Console.WriteLine(entry);
+            //Methods methods = new Methods();
+            //Entry entry = methods.GetEntry(2);
 
-            methods.UpdateEntry(entry);
+            //entry.Description = "Mod";
+            //entry.Timestamp = DateTime.UtcNow;
+
+            //Console.WriteLine(entry);
+
+            //methods.UpdateEntry(entry);
 
             
             /*
