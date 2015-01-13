@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using PomodoroGUI.Messaging;
+using PomodoroGUI.Views;
 using System.Windows.Input;
 
 namespace PomodoroGUI.ViewModels
@@ -31,7 +32,7 @@ namespace PomodoroGUI.ViewModels
             {
                 if (optimisticUserCommand == null)
                 {
-                    optimisticUserCommand = new RelayCommand<object>(s => UpdateWithUserVersion(), null);
+                    optimisticUserCommand = new RelayCommand<object>(s => UpdateWithUserVersion((OptimisticView)s), null);
                 }
                 return optimisticUserCommand;
             }
@@ -45,7 +46,7 @@ namespace PomodoroGUI.ViewModels
             {
                 if (optimisticOtherUserCommand == null)
                 {
-                    optimisticOtherUserCommand = new RelayCommand<object>(s => UpdateWithOtherUserVersion(), null);
+                    optimisticOtherUserCommand = new RelayCommand<object>(s => UpdateWithOtherUserVersion((OptimisticView)s), null);
                 }
                 return optimisticOtherUserCommand;
             }
@@ -59,7 +60,7 @@ namespace PomodoroGUI.ViewModels
             {
                 if (optimisticServerCommand == null)
                 {
-                    optimisticServerCommand = new RelayCommand<object>(s => UpdateWithServerVersion(), null);
+                    optimisticServerCommand = new RelayCommand<object>(s => UpdateWithServerVersion((OptimisticView)s), null);
                 }
                 return optimisticServerCommand;
             }
@@ -67,22 +68,25 @@ namespace PomodoroGUI.ViewModels
 
         #endregion
 
-        private void UpdateWithUserVersion()
+        private void UpdateWithUserVersion(OptimisticView ov)
         {
             System.Console.WriteLine("UpdateWithUserVersion");
             Messenger.Default.Send(new PomodoroGeneralMessage { Type = PomodoroGeneralMessage.MessageType.UpdateWithUserVersion });
+            ov.Close();
         }
 
-        private void UpdateWithOtherUserVersion()
+        private void UpdateWithOtherUserVersion(OptimisticView ov)
         {
             System.Console.WriteLine("UpdateWithOtherUserVersion");
             Messenger.Default.Send(new PomodoroGeneralMessage { Type = PomodoroGeneralMessage.MessageType.UpdateWithOtherUserVersion });
+            ov.Close();
         }
 
-        private void UpdateWithServerVersion()
+        private void UpdateWithServerVersion(OptimisticView ov)
         {
             System.Console.WriteLine("UpdateWithServerVersion");
             Messenger.Default.Send(new PomodoroGeneralMessage { Type = PomodoroGeneralMessage.MessageType.UpdateWithServerVersion });
+            ov.Close();
         }
         
     }

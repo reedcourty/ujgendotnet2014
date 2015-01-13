@@ -52,8 +52,8 @@ namespace PomodoroGUI.ViewModels
 
         Entry backupOriginalEntry = null;
 
-        OptimisticView ov = new OptimisticView();
-        
+        OptimisticView ov = null;
+
 
         private int entryId;
 
@@ -64,7 +64,7 @@ namespace PomodoroGUI.ViewModels
         }
 
 
-        
+
 
         public DateTime EntryTimestamp
         {
@@ -76,13 +76,13 @@ namespace PomodoroGUI.ViewModels
         public string EntryDescription
         {
             get { return entry.Description; }
-            set 
+            set
             {
                 if (originalEntry == null)
                 {
                     originalEntry = new Entry() { Id = entry.Id, Timestamp = entry.Timestamp, Description = entry.Description, Tags = entry.Tags, RowVersion = entry.RowVersion };
                 }
-                
+
                 entry.Description = value;
 
                 updateUserDescription = entry.Description;
@@ -99,13 +99,13 @@ namespace PomodoroGUI.ViewModels
 
         public string EntryTags
         {
-            get 
-            { 
+            get
+            {
                 var tags = new List<Tag>(entry.Tags);
-                return String.Join(", ", tags.Select(x => x.TagName)); 
+                return String.Join(", ", tags.Select(x => x.TagName));
             }
         }
-        
+
 
 
 
@@ -147,7 +147,7 @@ namespace PomodoroGUI.ViewModels
             set { descriptionBoxValue = value; RaisePropertyChanged("DescriptionBoxValue"); }
         }
 
-        
+
 
         private bool descriptionBoxEnabled;
 
@@ -196,9 +196,9 @@ namespace PomodoroGUI.ViewModels
 
             Messenger.Default.Register<PomodoroTimerMessage>(this, ProcessMessages);
             Messenger.Default.Register<PomodoroGeneralMessage>(this, ProcessMessages);
-            
+
             // this.RaisePropertyChanged("EntryDescription");
-            
+
         }
 
         void EntryViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -209,13 +209,13 @@ namespace PomodoroGUI.ViewModels
 
             bw.DoWork += (s, ev) => UpdateEntry(modifiedEntry, ev);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(DoStuffAfterUpdateCompleted);
-            
+
             bw.RunWorkerAsync();
-            
-            
+
+
             // var ize = UpdateEntryAsync(modifiedEntry.Id, oldDescription, modifiedEntry.Description);
 
-            
+
             // Messenger.Default.Send(new PomodoroGeneralMessage { Type = PomodoroGeneralMessage.MessageType.LoadEntryList });
 
         }
@@ -227,7 +227,7 @@ namespace PomodoroGUI.ViewModels
             entry.Description = resultEntry.Description;
             // TODO: A frissítést még meg kell oldani.
             // EntryDescription = resultEntry.Description;
-            
+
             originalEntry = null;
         }
 
@@ -253,12 +253,12 @@ namespace PomodoroGUI.ViewModels
 
                         MessageBox.Show(gebie.Message);
                     }
-                    
-                    MessageBox.Show(fe.Message);
+
+                    // MessageBox.Show(fe.Message);
 
                     Application.Current.Dispatcher.BeginInvoke(new Action(() =>
                     {
-                        
+                        ov = new OptimisticView();
                         ov.Show();
 
                     }));
@@ -296,15 +296,30 @@ namespace PomodoroGUI.ViewModels
             switch (receivedMessage.Type)
             {
                 case PomodoroGeneralMessage.MessageType.UpdateWithUserVersion:
-                    ov.Close();
+
+                    if (ov != null) ov.Close();
+
+
+
+
                     UpdateWith(0);
                     break;
                 case PomodoroGeneralMessage.MessageType.UpdateWithOtherUserVersion:
-                    ov.Close();
+
+
+                    if (ov != null) ov.Close();
+
+
+
                     UpdateWith(1);
                     break;
                 case PomodoroGeneralMessage.MessageType.UpdateWithServerVersion:
-                    ov.Close();
+
+
+                    if (ov != null) ov.Close();
+
+
+
                     UpdateWith(2);
                     break;
             }
@@ -357,8 +372,11 @@ namespace PomodoroGUI.ViewModels
             SaveNewEntryEnabled = false;
             DescriptionBoxEnabled = false;
             TagsBoxEnabled = false;
-            
+
         }
+
+
+
 
     }
 }
