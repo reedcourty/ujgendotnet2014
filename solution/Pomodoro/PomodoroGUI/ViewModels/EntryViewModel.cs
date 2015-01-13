@@ -312,7 +312,7 @@ namespace PomodoroGUI.ViewModels
 
         private void UpdateWith(int p)
         {
-            throw new NotImplementedException();
+            Logger.Debug(p.ToString());
         }
 
         private void SaveEntry()

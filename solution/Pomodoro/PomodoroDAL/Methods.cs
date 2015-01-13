@@ -167,7 +167,7 @@ namespace PomodoroDAL
                 {
                     pctx.Entry(item).Collection(x => x.Tags).Load();
 
-                    ((IObjectContextAdapter)pctx).ObjectContext.Detach(item);
+                    // ((IObjectContextAdapter)pctx).ObjectContext.Detach(item);
 
                     result.Add(item);
                 }
