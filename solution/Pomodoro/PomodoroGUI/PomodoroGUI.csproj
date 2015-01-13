@@ -113,6 +113,7 @@
     </Compile>
     <Compile Include="ViewModels\EntryViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\OptimisticViewModel.cs" />
     <Compile Include="ViewModels\PomodoroTimerViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\EntryView.xaml.cs">
@@ -120,6 +121,9 @@
     </Compile>
     <Compile Include="Views\NewEntryView.xaml.cs">
       <DependentUpon>NewEntryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OptimisticView.xaml.cs">
+      <DependentUpon>OptimisticView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PomodoroTimerView.xaml.cs">
       <DependentUpon>PomodoroTimerView.xaml</DependentUpon>
@@ -141,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NewEntryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OptimisticView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

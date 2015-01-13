@@ -12,6 +12,9 @@ using System.Windows.Input;
 using System.Linq;
 using Pomodoro.Utils;
 using System.Diagnostics;
+using PomodoroGUI.Views;
+using System.Windows.Threading;
+
 
 namespace PomodoroGUI.ViewModels
 {
@@ -24,8 +27,33 @@ namespace PomodoroGUI.ViewModels
     public class EntryViewModel : ViewModelBase
     {
 
+
+
+        string updateUserDescription;
+        string updateOtherUserDescription;
+        string updateServerDescription;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        bool updateSuccessful = false;
         Entry entry;
         Entry originalEntry = null;
+
+        Entry backupOriginalEntry = null;
+
+        OptimisticView ov = new OptimisticView();
+        
 
         private int entryId;
 
@@ -56,6 +84,10 @@ namespace PomodoroGUI.ViewModels
                 }
                 
                 entry.Description = value;
+
+                updateUserDescription = entry.Description;
+                updateServerDescription = originalEntry.Description;
+
                 RaisePropertyChanged("EntryDescription");
                 Logger.TraceEvent(TraceEventType.Verbose, 0, "EntryDescription property changed");
             }
@@ -163,6 +195,7 @@ namespace PomodoroGUI.ViewModels
             TagsBoxValue = "";
 
             Messenger.Default.Register<PomodoroTimerMessage>(this, ProcessMessages);
+            Messenger.Default.Register<PomodoroGeneralMessage>(this, ProcessMessages);
             
             // this.RaisePropertyChanged("EntryDescription");
             
@@ -194,6 +227,7 @@ namespace PomodoroGUI.ViewModels
             entry.Description = resultEntry.Description;
             // TODO: A frissítést még meg kell oldani.
             // EntryDescription = resultEntry.Description;
+            
             originalEntry = null;
         }
 
@@ -205,9 +239,11 @@ namespace PomodoroGUI.ViewModels
                 try
                 {
                     result = psc.UpdateEntry(modifiedEntry);
+                    updateSuccessful = true;
                 }
                 catch (Exception fe)
                 {
+                    updateSuccessful = false;
                     try
                     {
                         result = psc.GetEntryById(modifiedEntry.Id);
@@ -219,6 +255,13 @@ namespace PomodoroGUI.ViewModels
                     }
                     
                     MessageBox.Show(fe.Message);
+
+                    Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        
+                        ov.Show();
+
+                    }));
                 }
             }
             e.Result = result;
@@ -247,6 +290,31 @@ namespace PomodoroGUI.ViewModels
             }
         }
 
+
+        private void ProcessMessages(PomodoroGeneralMessage receivedMessage)
+        {
+            switch (receivedMessage.Type)
+            {
+                case PomodoroGeneralMessage.MessageType.UpdateWithUserVersion:
+                    ov.Close();
+                    UpdateWith(0);
+                    break;
+                case PomodoroGeneralMessage.MessageType.UpdateWithOtherUserVersion:
+                    ov.Close();
+                    UpdateWith(1);
+                    break;
+                case PomodoroGeneralMessage.MessageType.UpdateWithServerVersion:
+                    ov.Close();
+                    UpdateWith(2);
+                    break;
+            }
+        }
+
+        private void UpdateWith(int p)
+        {
+            throw new NotImplementedException();
+        }
+
         private void SaveEntry()
         {
             DisableEntryView();
@@ -258,7 +326,6 @@ namespace PomodoroGUI.ViewModels
 
             bw.RunWorkerAsync();
 
-            
         }
 
         private void DoStuffAfterCompleted(object sender, RunWorkerCompletedEventArgs e)

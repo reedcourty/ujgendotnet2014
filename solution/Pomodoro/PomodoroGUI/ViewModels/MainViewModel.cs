@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Messaging;
 using Pomodoro.Utils;
 using PomodoroGUI.Messaging;
 using PomodoroGUI.PomodoroServiceReference;
+using PomodoroGUI.Views;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;

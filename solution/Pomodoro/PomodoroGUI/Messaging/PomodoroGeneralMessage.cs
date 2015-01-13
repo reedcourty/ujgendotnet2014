@@ -10,7 +10,10 @@ namespace PomodoroGUI.Messaging
     {
         public enum MessageType
         {
-            LoadEntryList
+            LoadEntryList,
+            UpdateWithUserVersion,
+            UpdateWithOtherUserVersion,
+            UpdateWithServerVersion
         }
 
         public MessageType Type { get; set; }
