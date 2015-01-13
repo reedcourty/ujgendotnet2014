@@ -15,5 +15,24 @@ namespace Pomodoro.Utils
         {
             _default.TraceEvent(eventType, id, msg);
         }
+
+
+        public static void Debug(string msg)
+        {
+            TraceEvent(TraceEventType.Verbose, 10, msg);
+        }
+
+
+        public static void Error(string msg)
+        {
+            TraceEvent(TraceEventType.Error, 50, msg);
+        }
+
+
+        public static void Info(string msg)
+        {
+            TraceEvent(TraceEventType.Information, 20, msg);
+        }
+
     }
 }

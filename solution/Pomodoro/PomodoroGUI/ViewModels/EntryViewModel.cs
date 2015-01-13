@@ -60,7 +60,7 @@ namespace PomodoroGUI.ViewModels
         public int EntryId
         {
             get { return entry.Id; }
-            set { entry.Id = value; RaisePropertyChanged("EntryId"); Logger.TraceEvent(TraceEventType.Verbose, 0, "EntryId property changed"); }
+            set { entry.Id = value; RaisePropertyChanged("EntryId"); Logger.Debug(String.Format("EntryId property changed to '{0}'", entry.Id)); }
         }
 
 
@@ -69,7 +69,7 @@ namespace PomodoroGUI.ViewModels
         public DateTime EntryTimestamp
         {
             get { return entry.Timestamp; }
-            set { entry.Timestamp = value; RaisePropertyChanged("EntryTimestamp"); Logger.TraceEvent(TraceEventType.Verbose, 0, "EntryTimestamp property changed"); }
+            set { entry.Timestamp = value; RaisePropertyChanged("EntryTimestamp"); Logger.Debug(String.Format("EntryTimestamp property changed to '{0}'", entry.Timestamp)); }
         }
 
 
@@ -89,7 +89,7 @@ namespace PomodoroGUI.ViewModels
                 updateServerDescription = originalEntry.Description;
 
                 RaisePropertyChanged("EntryDescription");
-                Logger.TraceEvent(TraceEventType.Verbose, 0, "EntryDescription property changed");
+                Logger.Debug(String.Format("EntryDescription property changed to '{0}'", entry.Description));
             }
         }
 

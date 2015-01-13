@@ -60,7 +60,7 @@ namespace PomodoroDAL
 
                     if (in_db_entry != null)
                     {
-                        Logger.TraceEvent(TraceEventType.Verbose, 10, in_db_entry.ToString());
+                        Logger.Debug(in_db_entry.ToString());
                         comment.Entry = in_db_entry;
                     }
                     else
@@ -96,8 +96,7 @@ namespace PomodoroDAL
 
                         if (in_db_tag != null)
                         {
-                            Console.WriteLine(in_db_tag);
-                            Logger.TraceEvent(TraceEventType.Verbose, 10, in_db_tag.ToString());
+                            Logger.Debug(in_db_tag.ToString());
                             entry.Tags.Add(in_db_tag);
                         }
                         else
@@ -222,7 +221,7 @@ namespace PomodoroDAL
         public Entry UpdateEntry(Entry newEntry)
         {
             Entry result = null;
-            Logger.TraceEvent(TraceEventType.Verbose, 10, newEntry.ToString());
+            Logger.Debug(newEntry.ToString());
             Entry entryInDb = null;
             using (PomodoroContext pctx = new PomodoroContext(connectionString))
             {
