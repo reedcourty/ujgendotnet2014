@@ -13,63 +13,23 @@ namespace PomodoroService
 
         private PomodoroDAL.Methods methods = new Methods();
 
-        /*
-        public List<Tag> GetTags()
-        {
-            return new List<Tag>();
-        }
 
-        public List<Comment> GetComments()
-        {
-            return new List<Comment>();
-        }
-
-
-        public Tag GetTag(int id)
-        {
-            return new Tag();
-        }
-
-        */
         public Entry GetEntryById(int id) {
             return methods.GetEntryById(id);
         }
 
-        /*
-        public Comment GetComment(int id)
-        {
-            return new Comment();
-        }
-
-        */
-
+        
         public Tag AddTag(string tagName)
         {
             return methods.AddNewTag(tagName);
         }
 
-        /*
-        public void AddEntry(Entry new_entry)
-        {
-
-        }
-
-
-        public void AddComment(Comment new_comment)
-        {
-
-        }
-
-        public void UpdateTag(int id, string tagname, List<int> entry_ids)
-        {
-
-        }
-        */
-
+        
         public string OldUpdateEntry(int entryId, string oldDescription, string newDescription)
         {
             return methods.UpdateEntry(entryId, oldDescription, newDescription);
         }
+
 
         public Entry UpdateEntry(Entry newEntry)
         {
@@ -90,12 +50,7 @@ namespace PomodoroService
             return result;
         }
 
-        /*
-        public void UpdateComment(int id, string content, int entryId)
-        {
-
-        }
-        */
+       
         public void SaveEntry(DateTime timestamp, string description, string tags)
         {
             try
@@ -107,6 +62,7 @@ namespace PomodoroService
                 throw new FaultException(String.Format("Something bad happend while we're trying to save the entry! :( ({0})", ie.Message));
             }
         }
+
 
         public List<Entry> GetEntries()
         {
